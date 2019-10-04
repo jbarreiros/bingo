@@ -1,0 +1,26 @@
+{
+  "name": "bingo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "stop": "pkill --signal SIGINT BingoApp",
+    "build": "cp node_modules/normalize.css/normalize.css dist/ && webpack --watch --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm start & npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "normalize.css": "^8.0.1",
+    "uuid-random": "^1.3.0"
+  }
+}
