@@ -20,7 +20,7 @@ export class Store {
       set: (state, key, value) => {
         state[key] = value;
 
-        console.log(`state change: ${key}: ${value}`);
+        console.log(`state change: ${JSON.stringify(key)}: ${JSON.stringify(value)}`);
 
         this.processCallbacks(this.state);
 
@@ -36,7 +36,7 @@ export class Store {
       return;
     }
 
-    console.groupCollapsed(`ACTION: ${actionKey}`);
+    console.group(`ACTION: ${actionKey}`);
 
     this.status = 'action';
     this.actions[actionKey](this, payload);
@@ -53,8 +53,8 @@ export class Store {
     }
 
     this.status = 'mutation';
-    let newState = this.mutations[mutationKey](this.state, payload);
-    this.state = newState;
+    /*const newState =*/ this.mutations[mutationKey](this.state, payload);
+    // this.state = newState;
     // this.status = 'resting';
 
     // return true;
@@ -74,13 +74,13 @@ export class Store {
   }
 
   processCallbacks(data) {
-    if(!self.callbacks.length) {
+    if(!this.callbacks.length) {
         // return false;
         return;
     }
 
     // We've got callbacks, so loop each one and fire it off
-    self.callbacks.forEach(callback => callback(data));
+    this.callbacks.forEach(callback => callback(data));
 
     // return true;
   }

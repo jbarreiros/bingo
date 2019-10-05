@@ -31,6 +31,9 @@ const randomizedTiles = tiles.sort(() => Math.random() - 0.5);
 randomizedTiles.splice(12, 0, 'this presentation is confidential');
 
 export default {
+  app: {
+    page: 'board'
+  },
   current: {
     id: uuid(),
     tiles: randomizedTiles,

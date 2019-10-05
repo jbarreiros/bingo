@@ -35,6 +35,7 @@ class BingoTile extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="./normalize.css">
       <style>
       :host {
         background-color: ${this.selected ? 'blue' : '#fff'};

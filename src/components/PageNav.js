@@ -1,24 +1,46 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 
 class PageNav extends LitElement {
   static get properties() {
-    return {
-      pages: Array,
-      activePage: String
-    };
+    return {};
+  }
+
+  static get styles() {
+    return css`
+      nav {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      ul {
+        display: inline-block;
+        margin: 0;
+        padding-left: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    `;
   }
 
   constructor() {
     super();
-    this.pages = ['My Bingo Board', 'Other Boards'];
-    this.activePage = 'My Bingo Board';
   }
 
   render() {
     return html`
+      <link rel="stylesheet" href="./normalize.css">
       <nav>
         <ul>
-          ${this.pages.map(label => html`<li><button type="button">${label}</button></li>`)}
+          <li>
+            <bingo-page-nav-item key="board" label="My Bingo Board" selected="true">
+          </li>
+          <li>
+            <bingo-page-nav-item key="opponents" label="You Opponents">
+          </li>
         </ul>
       </nav>
     `;

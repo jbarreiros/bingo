@@ -1,12 +1,25 @@
 export default {
-  tileSelected(state, payload) {
-    // not using push(), to ensure immutability
-    state.current.selectedTiles = [...state.current.selectedTiles, payload];
+  setCurrentPage(state, newPage) {
+    state.app = Object.assign({}, state.app, { page: newPage });
     return state;
   },
 
-  tileUnselected(state, payload) {
-    state.current.selectedTiles = state.current.selectedTiles.filter(tile => tile !== payload);
+  pushTileToSelectedList(state, tileIdx) {
+    // not using push(), to ensure immutability
+    state.current = Object.assign(
+      {},
+      state.current,
+      { selectedTiles: [...state.current.selectedTiles, tileIdx] }
+    );
+    return state;
+  },
+
+  popTileFromSelectedList(state, tileIdx) {
+    state.current = Object.assign(
+      {},
+      state.current,
+      { selectedTiles: state.current.selectedTiles.filter(tile => tile !== tileIdx) }
+    );
     return state;
   }
 }

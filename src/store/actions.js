@@ -1,12 +1,16 @@
 let socket = null;
 
 export default {
+  changePage(context, newPage) {
+    context.commit('setCurrentPage', newPage);
+  },
+
   tileSelected(context, payload) {
-    context.commit('tileSelected', payload);
+    context.commit('pushTileToSelectedList', payload);
   },
 
   tileUnselected(context, payload) {
-    context.commit('tileUnselected', payload);
+    context.commit('popTileFromSelectedList', payload);
   },
 
   // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
