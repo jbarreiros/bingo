@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-class PageNav extends LitElement {
+class Tabs extends LitElement {
   static get properties() {
     return {};
   }
@@ -35,16 +35,11 @@ class PageNav extends LitElement {
       <link rel="stylesheet" href="./normalize.css">
       <nav>
         <ul>
-          <li>
-            <bingo-page-nav-item key="board" label="My Bingo Board" selected="true">
-          </li>
-          <li>
-            <bingo-page-nav-item key="opponents" label="You Opponents">
-          </li>
+          <slot></slot>
         </ul>
       </nav>
     `;
   }
 }
 
-customElements.define('bingo-page-nav', PageNav);
+customElements.define('bingo-tabs', Tabs);

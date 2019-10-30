@@ -4,7 +4,7 @@ export class Store {
     this.actions = {};
     this.mutations = {};
     this.state = {};
-    this.status = 'resting';
+    // this.status = 'resting';
 
     this.callbacks = [];
 
@@ -16,13 +16,17 @@ export class Store {
       this.mutations = params.mutations;
     }
 
+    this.state = params.state;
+    this.processCallbacks();
+
     this.state = new Proxy((params.state || {}), {
       set: (state, key, value) => {
         state[key] = value;
 
-        console.log(`state change: ${JSON.stringify(key)}: ${JSON.stringify(value)}`);
+        console.log('Do not mutate state!', key);
 
-        this.processCallbacks(this.state);
+        // console.log('state change:', key, value);
+        // this.processCallbacks(this.state);
 
         return true;
       }
@@ -32,13 +36,12 @@ export class Store {
   dispatch(actionKey, payload) {
     if(typeof this.actions[actionKey] !== 'function') {
       console.error(`Action "${actionKey} doesn't exist.`);
-      // return false;
       return;
     }
 
-    console.group(`ACTION: ${actionKey}`);
+    console.group(`dispatching ACTION: ${actionKey}`);
 
-    this.status = 'action';
+    // this.status = 'action';
     this.actions[actionKey](this, payload);
     // this.status = 'resting';
 
@@ -48,40 +51,35 @@ export class Store {
   commit(mutationKey, payload) {
     if(typeof this.mutations[mutationKey] !== 'function') {
       console.log(`Mutation "${mutationKey}" doesn't exist`);
-      // return false;
       return;
     }
 
-    this.status = 'mutation';
-    /*const newState =*/ this.mutations[mutationKey](this.state, payload);
-    // this.state = newState;
+    console.log('state change:', mutationKey, payload);
+
+    // this.status = 'mutation';
+    const newState = this.mutations[mutationKey](this.state, payload);
+    this.state = newState;
     // this.status = 'resting';
 
-    // return true;
+    this.processCallbacks(this.state);
   }
 
   subscribe(callback) {
     if(typeof callback !== 'function') {
         console.error('You can only subscribe to Store changes with a valid function');
-        // return false;
         return;
     }
 
-    // A valid function, so it belongs in our collection
     this.callbacks.push(callback);
-
-    // return true;
   }
 
   processCallbacks(data) {
     if(!this.callbacks.length) {
-        // return false;
-        return;
+      return;
     }
 
-    // We've got callbacks, so loop each one and fire it off
-    this.callbacks.forEach(callback => callback(data));
+    console.log('process callbacks');
 
-    // return true;
+    this.callbacks.forEach(callback => callback(data));
   }
 }

@@ -1,5 +1,5 @@
 import { LitElement, html, css, unsafeCSS } from 'lit-element';
-import { Store } from '../store/Store';
+import { Store } from '../lib/Store';
 import store from '../store/index';
 
 class BingoTile extends LitElement {

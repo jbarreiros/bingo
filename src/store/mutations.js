@@ -1,25 +1,29 @@
 export default {
   setCurrentPage(state, newPage) {
-    state.app = Object.assign({}, state.app, { page: newPage });
-    return state;
+    console.log('setCurrentPage');
+    return { ...state, app: { ...state.app, page: newPage } };
   },
 
   pushTileToSelectedList(state, tileIdx) {
     // not using push(), to ensure immutability
-    state.current = Object.assign(
-      {},
-      state.current,
-      { selectedTiles: [...state.current.selectedTiles, tileIdx] }
-    );
-    return state;
+    console.log('pushTileToSelectedList');
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        selectedTiles: [...state.current.selectedTiles, tileIdx]
+      }
+    };
   },
 
   popTileFromSelectedList(state, tileIdx) {
-    state.current = Object.assign(
-      {},
-      state.current,
-      { selectedTiles: state.current.selectedTiles.filter(tile => tile !== tileIdx) }
-    );
-    return state;
+    console.log('popTitleFromSelectedList');
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        selectedTiles: state.current.selectedTiles.filter(tile => tile !== tileIdx)
+      }
+    };
   }
 }

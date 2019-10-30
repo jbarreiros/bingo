@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { Store } from '../store/Store';
+import { Store } from '../lib/Store';
 import store from '../store/index';
 
-class PageNavItem extends LitElement {
+class TabItem extends LitElement {
   static get properties() {
     return {
       store: Store,
@@ -24,9 +24,9 @@ class PageNavItem extends LitElement {
   constructor() {
     super();
     this.store = store;
-    this.key = '';
-    this.label = '';
-    this.selected = false;
+    // this.key = '';
+    // this.label = '';
+    // this.selected = false;
     this.store.subscribe(state => { this.selected = this.key === this.store.state.app.page });
   }
 
@@ -34,10 +34,12 @@ class PageNavItem extends LitElement {
     const classes = { selected: this.selected };
 
     return html`
-      <link rel="stylesheet" href="./normalize.css">
-      <button type="button" class="${classMap(classes)}" @click="${this.onClickHandler}">
-        ${this.label}
-      </button>
+      <li>
+        <link rel="stylesheet" href="./normalize.css">
+        <button type="button" class="${classMap(classes)}" @click="${this.onClickHandler}">
+          ${this.label}
+        </button>
+      </li>
     `;
   }
 
@@ -54,4 +56,4 @@ class PageNavItem extends LitElement {
   }
 }
 
-customElements.define('bingo-page-nav-item', PageNavItem);
+customElements.define('bingo-tab-item', TabItem);
