@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "stop": "pkill --signal SIGINT BingoApp",
-    "build": "cp node_modules/normalize.css/normalize.css dist/ && webpack --watch --mode=development",
+    "build": "webpack --watch --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm start & npm run build"
   },
