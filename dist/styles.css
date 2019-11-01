@@ -1,1 +1,23 @@
-body { padding: 1rem; }
+:root {
+  /* --not-mobile-breakpoint: 35em; */
+}
+
+body {
+  font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (min-width: 35em) {
+  body {
+    padding: 1rem;
+  }
+}
+
+.page-footer {
+  font-size: .8rem;
+  text-align: center;
+  font-style: italic;
+  margin: 3rem auto 0 auto;
+  text-align: center;
+}

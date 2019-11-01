@@ -15,12 +15,30 @@ class BingoTile extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         border: 1px solid #000;
-        padding: 1rem;
         text-transform: uppercase;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        overflow: hidden;
+        cursor: pointer;
       }
+
+      @media only screen and (min-width: 35em) {
+        :host {
+          min-height: 5rem;
+        }
+      }
+
       //:host(.on) {}
+
+      :host(:hover),
+      :host(:focus) {
+        background-color: lightskyblue;
+      }
     `;
   }
 
@@ -35,11 +53,10 @@ class BingoTile extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="./normalize.css">
       <style>
       :host {
-        background-color: ${this.selected ? 'blue' : '#fff'};
-        color: ${this.selected ? '#fff' : '#000'};
+        background-color: ${this.selected ? 'blue' : 'white'};
+        color: ${this.selected ? 'white' : 'black'};
       }
       </style>
       ${this.label}

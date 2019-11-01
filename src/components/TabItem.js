@@ -15,8 +15,25 @@ class TabItem extends LitElement {
 
   static get styles() {
     return css`
+      :host {}
+
+      li {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom-color: black;
+        margin-bottom: -1px;
+      }
+
+      button {
+        border: none;
+        background: white;
+        cursor: pointer;
+        padding: .5rem 1rem;
+      }
+
       .selected {
-        outline: 6px solid #000;
+        border-top: .15rem solid blue;
+        border-bottom-color: white;
       }
     `;
   }
@@ -24,9 +41,9 @@ class TabItem extends LitElement {
   constructor() {
     super();
     this.store = store;
-    // this.key = '';
-    // this.label = '';
-    // this.selected = false;
+    this.key = '';
+    this.label = '';
+    this.selected = false;
     this.store.subscribe(state => { this.selected = this.key === this.store.state.app.page });
   }
 
@@ -34,9 +51,8 @@ class TabItem extends LitElement {
     const classes = { selected: this.selected };
 
     return html`
-      <li>
-        <link rel="stylesheet" href="./normalize.css">
-        <button type="button" class="${classMap(classes)}" @click="${this.onClickHandler}">
+      <li class="${classMap(classes)}">
+        <button type="button" @click="${this.onClickHandler}">
           ${this.label}
         </button>
       </li>

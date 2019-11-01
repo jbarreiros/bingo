@@ -13,7 +13,7 @@ class BingoBoard extends LitElement {
   static get styles() {
     return css`
       :host {
-        /* display: grid; */
+        display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(5, 1fr);
       }
@@ -29,7 +29,6 @@ class BingoBoard extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="./normalize.css">
       <style>
       :host {
         display: ${this.active ? 'grid' : 'none'};
