@@ -28,12 +28,23 @@ app.ws('/', (ws, req) => {
 
   ws.onclose = () => {
     console.log('Websocket connection closed');
+    const userId = clients.getClientId(ws);
+    console.log(`removing client ${userId}`);
     clients.removeClient(ws);
-    console.log('clients: ', clients.getClientIds());
+    console.log('new clients list: ', clients.getClientIds());
+
+    delete players[userId];
+
+    clients.getOtherClients(userId).forEach((client, id) => {
+      console.log(`Sending update to ${id} (player removed)`);
+      client.send(JSON.stringify({
+        event: 'update',
+        data: players
+      }));
+    });
   };
 
   ws.onmessage = (ev) => {
-    // console.log(ev);
     const data = JSON.parse(ev.data);
     console.log(`Websocket message received: ${data.event}`);
 
@@ -48,7 +59,7 @@ app.ws('/', (ws, req) => {
     players[userId] = data.player;
 
     clients.getOtherClients(userId).forEach((client, id) => {
-      console.log(`Sending update to ${id}`);
+      console.log(`Sending update to ${id} (player added)`);
       client.send(JSON.stringify({
         event: 'update',
         data: players

@@ -23,8 +23,14 @@ export default {
     };
 
     socket.onmessage = (ev) => {
+      const data = JSON.parse(ev.data);
+      const players = data.data;
       console.log('onmessage');
-      console.log(ev.data);
+      console.log(data);
+
+      if (Object.keys(players).length) {
+        context.commit('updatePlayers', players);
+      }
     };
   },
 

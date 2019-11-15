@@ -19,6 +19,11 @@ module.exports = class WebsocketClients {
     return clients;
   }
 
+  getClientId(clientToFind) {
+    const [clientId] = [...this.clients.entries()].find(([id, client]) => clientToFind === client);
+    return clientId;
+  }
+
   getClientIds() {
     return [...this.clients.keys()];
   }

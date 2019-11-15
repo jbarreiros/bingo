@@ -1,12 +1,10 @@
 import { LitElement, html, css } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { Store } from '../lib/Store';
 import store from '../store/index';
 
 class TabItem extends LitElement {
   static get properties() {
     return {
-      store: Store,
       key: String,
       label: String,
       selected: Boolean
@@ -19,9 +17,6 @@ class TabItem extends LitElement {
 
       li {
         display: inline-block;
-        border: 1px solid black;
-        border-bottom-color: black;
-        margin-bottom: -1px;
       }
 
       button {
@@ -29,22 +24,22 @@ class TabItem extends LitElement {
         background: white;
         cursor: pointer;
         padding: .5rem 1rem;
+        font-size: 1.1rem;
+        font-weight: bold;
       }
 
       .selected {
-        border-top: .15rem solid blue;
-        border-bottom-color: white;
+        border-bottom: .15rem solid blue;
       }
     `;
   }
 
   constructor() {
     super();
-    this.store = store;
     this.key = '';
     this.label = '';
     this.selected = false;
-    this.store.subscribe(state => { this.selected = this.key === this.store.state.app.page });
+    store.subscribe(state => { this.selected = this.key === state.app.page });
   }
 
   render() {

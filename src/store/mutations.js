@@ -25,5 +25,13 @@ export default {
         selectedTiles: state.current.selectedTiles.filter(tile => tile !== tileIdx)
       }
     };
+  },
+
+  updatePlayers(state, players) {
+    console.log('updatePlayers');
+    return {
+      ...state,
+      players
+    };
   }
 }

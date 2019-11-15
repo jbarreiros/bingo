@@ -9,7 +9,6 @@ class Tabs extends LitElement {
     return css`
       nav {
         margin-bottom: 2rem;
-        border-bottom: 1px solid black;
         text-align: center;
       }
 

@@ -2,6 +2,7 @@ import './components/BingoTile';
 import './components/BingoBoard';
 import './components/Tabs';
 import './components/TabItem';
+import './components/BingoOpponents';
 import store from './store/index';
 
 const pageTabs = document.querySelector('.js-app-tabs');

@@ -1,11 +1,9 @@
 import { LitElement, html, css } from 'lit-element';
-import { Store } from '../lib/Store';
 import store from '../store/index';
 
 class BingoBoard extends LitElement {
   static get properties() {
     return {
-      store: Store,
       active: Boolean
     };
   }
@@ -13,7 +11,6 @@ class BingoBoard extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(5, 1fr);
       }
@@ -23,8 +20,7 @@ class BingoBoard extends LitElement {
   constructor() {
     super();
     this.active = true;
-    this.store = store;
-    this.store.subscribe(state => { this.active = this.store.state.app.page === 'board' });
+    store.subscribe(state => { this.active = state.app.page === 'board' });
   }
 
   render() {

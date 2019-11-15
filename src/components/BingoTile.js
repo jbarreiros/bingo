@@ -1,11 +1,9 @@
-import { LitElement, html, css, unsafeCSS } from 'lit-element';
-import { Store } from '../lib/Store';
+import { LitElement, html, css } from 'lit-element';
 import store from '../store/index';
 
 class BingoTile extends LitElement {
   static get properties() {
     return {
-      store: Store,
       idx: Number,
       label: String,
       selected: Boolean
@@ -25,15 +23,15 @@ class BingoTile extends LitElement {
         margin-bottom: -1px;
         overflow: hidden;
         cursor: pointer;
+        font-size: 0.8rem;
       }
 
       @media only screen and (min-width: 35em) {
         :host {
           min-height: 5rem;
+          font-size: 1rem;
         }
       }
-
-      //:host(.on) {}
 
       :host(:hover),
       :host(:focus) {
