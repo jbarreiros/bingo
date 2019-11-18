@@ -36,6 +36,7 @@ export default {
   },
   current: {
     id: uuid(),
+    name: 'Unknown Player',
     tiles: randomizedTiles,
     selectedTiles: [],
   },
@@ -46,6 +47,7 @@ export default {
 players: [
   {
     id: #,
+    name: '',
     tiles: [],
     selectedTiles: []
   }

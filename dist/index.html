@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <bingo-tabs class="js-app-tabs">
-      <bingo-tab-item key="board" label="My Board" selected="selected"></bingo-tab-item>
-      <bingo-tab-item key="opponents" label="Opponents"></bingo-tab-item>
-    </bingo-tabs>
+    <header class="page-header">
+      <bingo-tabs class="js-app-tabs">
+        <bingo-tab-item key="board" label="My Board" selected="selected"></bingo-tab-item>
+        <bingo-tab-item key="opponents" label="Opponents"></bingo-tab-item>
+      </bingo-tabs>
+      <bingo-player></bingo-player>
+    </header>
 
     <bingo-container key="board">
       <bingo-board></bingo-board>

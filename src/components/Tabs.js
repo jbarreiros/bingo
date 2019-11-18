@@ -7,11 +7,6 @@ class Tabs extends LitElement {
 
   static get styles() {
     return css`
-      nav {
-        margin-bottom: 2rem;
-        text-align: center;
-      }
-
       ul {
         display: inline-block;
         margin: 0;

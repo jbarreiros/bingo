@@ -42,7 +42,6 @@ class BingoTile extends LitElement {
 
   constructor() {
     super();
-    this.store = store;
     this.idx = null;
     this.label = '';
     this.selected = false;

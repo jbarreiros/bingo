@@ -33,5 +33,16 @@ export default {
       ...state,
       players
     };
+  },
+
+  setPlayerName(state, playerName) {
+    console.log('mutation: setPlayerName');
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        name: playerName
+      }
+    };
   }
 }

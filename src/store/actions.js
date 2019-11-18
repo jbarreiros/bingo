@@ -13,6 +13,11 @@ export default {
     context.commit('popTileFromSelectedList', payload);
   },
 
+  setPlayerName(context, playerName) {
+    console.log('action: setPlayerName');
+    context.commit('setPlayerName', playerName);
+  },
+
   // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
   openWebsocket(context, payload) {
     socket = new WebSocket('ws://localhost:8080');

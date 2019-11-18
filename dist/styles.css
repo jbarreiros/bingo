@@ -14,6 +14,22 @@ body {
   }
 }
 
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+bingo-player,
+bingo-tabs {
+  display: inline-block;
+}
+
+bingo-player::before {
+  content: '|';
+  display: inline;
+  padding-right: 16px;
+}
+
 .page-footer {
   font-size: .8rem;
   text-align: center;
