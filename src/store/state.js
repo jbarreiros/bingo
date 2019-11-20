@@ -32,7 +32,7 @@ randomizedTiles.splice(12, 0, 'this presentation is confidential');
 
 export default {
   app: {
-    page: 'board'
+    page: 'card'
   },
   current: {
     id: uuid(),

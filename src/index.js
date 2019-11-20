@@ -1,5 +1,5 @@
 import './components/BingoTile';
-import './components/BingoBoard';
+import './components/BingoCard';
 import './components/Tabs';
 import './components/TabItem';
 import './components/BingoOpponents';
