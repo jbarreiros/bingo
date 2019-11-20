@@ -8,8 +8,15 @@ class RegisterModal extends LitElement {
 
   static get styles() {
     return css`
+      label {
+        font-weight: bold;
+      }
+
       input {
+        box-sizing: border-box;
         display: block;
+        font-size: 1rem;
+        width: 100%;
       }
     `;
   }
@@ -21,14 +28,14 @@ class RegisterModal extends LitElement {
   render() {
     return html`
       <bingo-modal
-        title="Welcome to Corporate-as-Fuck Bingo!"
-        submitText="Synergize Me!"
+        modalTitle="Clock in! It's time to play!"
+        submitText="Join the Game!"
         @bingo-modal-submit="${this.onSubmit}"
       >
         <div slot="modal-content">
-          <form>
-            <label id="player-name">Your corporate overlords request your name</name>
-            <input type="text" name="player-name" id="player-name" required>
+          <form @submit="${this.onSubmit}">
+            <label id="player-name">Your Name:</label>
+            <input type="text" name="player-name" id="player-name" required autofocus>
           </form>
         </div>
       </bingo-modal>
@@ -47,10 +54,9 @@ class RegisterModal extends LitElement {
     console.log(formData.get('player-name'));
 
     store.dispatch('setPlayerName', formData.get('player-name'));
-    store.dispatch('updatePlayer', store.state.current);
 
     const modal = this.shadowRoot.querySelector('bingo-modal');
-    const event = new CustomEvent('bingo-modal-close', {});
+    const event = new CustomEvent('bingo-modal-close', {bubbles: true, composed: true});
     modal.dispatchEvent(event);
   }
 }

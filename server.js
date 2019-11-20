@@ -54,6 +54,12 @@ app.ws('/', (ws, req) => {
       console.log(`Websocker: Registering ${userId}`);
       clients.saveClient(userId, ws);
       console.log('clients: ', clients.getClientIds());
+
+      console.log('Sending player list to the new player');
+      ws.send(JSON.stringify({
+        event: 'update',
+        data: players
+      }));
     }
 
     players[userId] = data.player;

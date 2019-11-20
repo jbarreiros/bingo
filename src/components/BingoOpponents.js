@@ -19,13 +19,13 @@ class BingoOpponents extends LitElement {
 
   constructor() {
     super();
-    this.players = {};
+    this.players = store.state.players;
     store.subscribe(state => this.players = state.players);
   }
 
   render() {
     return html`
-      ${Object.values(this.players).map((i, idx) => html`${i.id}`)}
+      ${Object.values(this.players).filter(/*todo filter by store.state.current.id */).map((i, idx) => html`${i.id}`)}
     `;
   }
 }

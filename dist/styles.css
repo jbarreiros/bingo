@@ -3,6 +3,8 @@
 }
 
 body {
+  background-color: #d6d7d3;
+  color: #2F3F52;
   font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin: 0;
   padding: 0;

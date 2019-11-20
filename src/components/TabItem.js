@@ -21,15 +21,16 @@ class TabItem extends LitElement {
 
       button {
         border: none;
-        background: white;
+        background: transparent;
         cursor: pointer;
         padding: .5rem 1rem;
         font-size: 1.1rem;
         font-weight: bold;
       }
 
+      li:hover,
       .selected {
-        border-bottom: .15rem solid blue;
+        border-bottom: 0.2rem solid #D26D80;
       }
     `;
   }

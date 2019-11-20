@@ -17,10 +17,8 @@ class BingoTile extends LitElement {
         align-items: center;
         justify-content: center;
         text-align: center;
-        border: 1px solid #000;
+        border: 1px solid #c8c9c8;
         text-transform: uppercase;
-        margin-right: -1px;
-        margin-bottom: -1px;
         overflow: hidden;
         cursor: pointer;
         font-size: 0.8rem;
@@ -28,14 +26,8 @@ class BingoTile extends LitElement {
 
       @media only screen and (min-width: 35em) {
         :host {
-          min-height: 5rem;
           font-size: 1rem;
         }
-      }
-
-      :host(:hover),
-      :host(:focus) {
-        background-color: lightskyblue;
       }
     `;
   }
@@ -45,15 +37,15 @@ class BingoTile extends LitElement {
     this.idx = null;
     this.label = '';
     this.selected = false;
-    this.addEventListener('click', this.clickHandler);
+    ['click', 'keypress'].forEach(event => this.addEventListener(event, this.clickHandler));
   }
 
   render() {
     return html`
       <style>
       :host {
-        background-color: ${this.selected ? 'blue' : 'white'};
-        color: ${this.selected ? 'white' : 'black'};
+        background-color: ${this.selected ? '#2F3F52' : '#f0f1ec'};
+        color: ${this.selected ? '#C35947' : '#252422'};
       }
       </style>
       ${this.label}

@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit-element';
 class Modal extends LitElement {
   static get properties() {
     return {
-      title: String,
+      modalTitle: String,
       submitText: String
     };
   }
@@ -21,14 +21,26 @@ class Modal extends LitElement {
       }
 
       .modal {
+        box-sizing: border-box;
         position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         z-index: 1010;
 
-        background-color: #fff;
+        top: 20%;
+        left: 5vw;
+        width: 90vw;
+
+        background-color: #F0F1EC;
+        border-radius: 4px;
         padding: 2rem;
+      }
+
+      @media only screen and (min-width: 35em) {
+        .modal {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: auto;
+        }
       }
 
       h1 {
@@ -40,6 +52,16 @@ class Modal extends LitElement {
       }
 
       button {
+        border: 0;
+        border-radius: 0.2rem;
+        font-size: 1rem;
+        padding: 0.8rem;
+        background-color: lightgreen;
+      }
+
+      button:hover,
+      button:focus {
+        background-color: #00ff00;
       }
     `;
   }
@@ -53,7 +75,7 @@ class Modal extends LitElement {
     return html`
       <section class="modal">
         <header>
-          <h1>${this.title}</h1>
+          <h1>${this.modalTitle}</h1>
         </header>
         <div class="modal-content">
           <slot name="modal-content"></slot>
