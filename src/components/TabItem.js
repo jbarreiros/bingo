@@ -7,7 +7,7 @@ class TabItem extends LitElement {
     return {
       key: String,
       label: String,
-      selected: Boolean
+      active: Boolean
     };
   }
 
@@ -39,12 +39,12 @@ class TabItem extends LitElement {
     super();
     this.key = '';
     this.label = '';
-    this.selected = false;
-    store.subscribe(state => { this.selected = this.key === state.app.page });
+    this.active = false;
+    store.subscribe(state => { this.active = this.key === state.app.page });
   }
 
   render() {
-    const classes = { selected: this.selected };
+    const classes = { selected: this.active };
 
     return html`
       <li class="${classMap(classes)}">
@@ -58,7 +58,7 @@ class TabItem extends LitElement {
   onClickHandler(ev) {
     console.log('navigate to new page', this.key);
 
-    if (this.selected) {
+    if (this.active) {
       // nothing to do
       console.log('already on this page');
       return;

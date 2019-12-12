@@ -48,8 +48,8 @@ players: [
   {
     id: #,
     name: '',
-    tiles: [],
-    selectedTiles: []
+    tiles: ['label1', ...],
+    selectedTiles: [#, ...]
   }
 ]
 */

@@ -24,7 +24,7 @@ class BingoTile extends LitElement {
         font-size: 0.8rem;
       }
 
-      @media only screen and (min-width: 35em) {
+      @media only screen and (min-width: 750px) {
         :host {
           font-size: 1rem;
         }

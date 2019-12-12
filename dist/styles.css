@@ -26,11 +26,11 @@ bingo-tabs {
   display: inline-block;
 }
 
-bingo-player::before {
+/*bingo-player::before {
   content: '|';
   display: inline;
   padding-right: 16px;
-}
+}*/
 
 .page-footer {
   font-size: .8rem;

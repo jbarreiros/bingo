@@ -4,19 +4,19 @@ import store from '../store/index';
 class BingoCard extends LitElement {
   static get properties() {
     return {
-      active: Boolean
     };
   }
 
   static get styles() {
     return css`
       :host {
+        display: grid;
         grid-template-columns: repeat(5, 20%);
         grid-template-rows: auto repeat(5, 20%);
         justify-content: center;
       }
 
-      @media only screen and (min-width: 35em) {
+      @media only screen and (min-width: 750px) {
         :host {
           grid-template-columns: repeat(5, 150px);
           grid-template-rows: auto repeat(5, 150px);
@@ -34,17 +34,10 @@ class BingoCard extends LitElement {
 
   constructor() {
     super();
-    this.active = true;
-    store.subscribe(state => { this.active = state.app.page === 'card' });
   }
 
   render() {
     return html`
-      <style>
-      :host {
-        display: ${this.active ? 'grid' : 'none'};
-      }
-      </style>
       ${[...'bingo'].map(i => html`<div class="letter">${i}</div>`)}
       ${store.state.current.tiles
           .map((tileLabel, idx) => html`

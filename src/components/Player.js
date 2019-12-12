@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import store from '../store/index';
 
-class BingoPlayer extends LitElement {
+class Player extends LitElement {
   static get properties() {
     return {
       name: String
@@ -26,4 +26,4 @@ class BingoPlayer extends LitElement {
   }
 }
 
-customElements.define('bingo-player', BingoPlayer);
+customElements.define('bingo-player', Player);
