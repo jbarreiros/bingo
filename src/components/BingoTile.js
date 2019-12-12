@@ -43,10 +43,10 @@ class BingoTile extends LitElement {
   render() {
     return html`
       <style>
-      :host {
-        background-color: ${this.selected ? '#2F3F52' : '#f0f1ec'};
-        color: ${this.selected ? '#C35947' : '#252422'};
-      }
+        :host {
+          background-color: ${this.selected ? '#2F3F52' : '#f0f1ec'};
+          color: ${this.selected ? '#C35947' : '#252422'};
+        }
       </style>
       ${this.label}
     `;

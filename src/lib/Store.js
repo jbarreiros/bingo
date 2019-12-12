@@ -4,8 +4,6 @@ export class Store {
     this.actions = {};
     this.mutations = {};
     this.state = {};
-    // this.status = 'resting';
-
     this.callbacks = [];
 
     if(params.hasOwnProperty('actions')) {
@@ -25,9 +23,6 @@ export class Store {
 
         console.log('Do not mutate state!', key);
 
-        // console.log('state change:', key, value);
-        // this.processCallbacks(this.state);
-
         return true;
       }
     });
@@ -41,9 +36,7 @@ export class Store {
 
     console.group(`dispatching ACTION: ${actionKey}`);
 
-    // this.status = 'action';
     this.actions[actionKey](this, payload);
-    // this.status = 'resting';
 
     console.groupEnd();
   }
@@ -56,10 +49,8 @@ export class Store {
 
     console.log('state change:', mutationKey, payload);
 
-    // this.status = 'mutation';
     const newState = this.mutations[mutationKey](this.state, payload);
     this.state = newState;
-    // this.status = 'resting';
 
     this.processCallbacks(this.state);
   }
@@ -77,8 +68,6 @@ export class Store {
     if(!this.callbacks.length) {
       return;
     }
-
-    console.log('process callbacks');
 
     this.callbacks.forEach(callback => callback(data));
   }

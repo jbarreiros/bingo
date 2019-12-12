@@ -9,7 +9,6 @@ const port = 8080;
 app.use(express.static('dist'));
 
 app.use(function (req, res, next) {
-  console.log('middleware');
   return next();
 });
 
@@ -24,19 +23,13 @@ const clients = new Clients();
 const players = {};
 
 app.ws('/', (ws, req) => {
-  ws.onopen = (data) => console.log('New client connected to websocket`');
-
   ws.onclose = () => {
-    console.log('Websocket connection closed');
     const userId = clients.getClientId(ws);
-    console.log(`removing client ${userId}`);
     clients.removeClient(ws);
-    console.log('new clients list: ', clients.getClientIds());
 
     delete players[userId];
 
     clients.getOtherClients(userId).forEach((client, id) => {
-      console.log(`Sending update to ${id} (player removed)`);
       client.send(JSON.stringify({
         event: 'update',
         data: players
@@ -46,16 +39,11 @@ app.ws('/', (ws, req) => {
 
   ws.onmessage = (ev) => {
     const data = JSON.parse(ev.data);
-    console.log(`Websocket message received: ${data.event}`);
-
     const userId = data.player.id;
 
     if (data.event === 'register') {
-      console.log(`Websocker: Registering ${userId}`);
       clients.saveClient(userId, ws);
-      console.log('clients: ', clients.getClientIds());
 
-      console.log('Sending player list to the new player');
       ws.send(JSON.stringify({
         event: 'update',
         data: players
@@ -65,15 +53,12 @@ app.ws('/', (ws, req) => {
     players[userId] = data.player;
 
     clients.getOtherClients(userId).forEach((client, id) => {
-      console.log(`Sending update to ${id} (player added)`);
       client.send(JSON.stringify({
         event: 'update',
         data: players
       }));
     });
   };
-
-  console.log('websocket initialized');
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

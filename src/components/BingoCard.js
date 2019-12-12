@@ -39,16 +39,15 @@ class BingoCard extends LitElement {
   render() {
     return html`
       ${[...'bingo'].map(i => html`<div class="letter">${i}</div>`)}
-      ${store.state.current.tiles
-          .map((tileLabel, idx) => html`
-            <bingo-tile
-              idx="${idx}"
-              label="${tileLabel}"
-              tabindex="0"
-              aria-role="button"
-              aria-pressed="false">
-            </bingo-title>`
-          )}
+      ${store.state.current.tiles.map((tileLabel, idx) => html`
+        <bingo-tile
+          idx="${idx}"
+          label="${tileLabel}"
+          tabindex="0"
+          aria-role="button"
+          aria-pressed="false"
+        ></bingo-title>
+      `)}
     `;
   }
 }

@@ -23,9 +23,9 @@ class TabContainer extends LitElement {
   render() {
     return html`
       <style>
-      :host {
-        display: ${this.active ? 'block' : 'none'}
-      }
+        :host {
+          display: ${this.active ? 'block' : 'none'}
+        }
       </style>
       <slot></slot>
     `;

@@ -56,11 +56,8 @@ class TabItem extends LitElement {
   }
 
   onClickHandler(ev) {
-    console.log('navigate to new page', this.key);
-
     if (this.active) {
       // nothing to do
-      console.log('already on this page');
       return;
     }
 

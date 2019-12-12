@@ -51,7 +51,6 @@ class RegisterModal extends LitElement {
     }
 
     const formData = new FormData(form);
-    console.log(formData.get('player-name'));
 
     store.dispatch('setPlayerName', formData.get('player-name'));
 
