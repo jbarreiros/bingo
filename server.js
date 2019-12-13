@@ -1,3 +1,5 @@
+const path = require("path");
+
 process.title = "BingoApp";
 
 const express = require("express");
@@ -6,15 +8,14 @@ const expressWs = require("express-ws")(app);
 const Clients = require("./src/lib/WebsocketClients");
 const port = 8080;
 
-app.use(express.static("dist"));
-
 app.use(function(req, res, next) {
   return next();
 });
 
 // frontend ------
 
-app.get("/", (req, res) => res.sendFile("dist/index.html"));
+app.use(express.static("public"));
+app.get("/", (req, res) => res.sendFile("public/index.html"));
 
 // websocket -----
 
@@ -29,7 +30,7 @@ app.ws("/", (ws, req) => {
 
     delete players[userId];
 
-    clients.getOtherClients(userId).forEach((client, id) => {
+    clients.getOtherClients(userId).forEach(client => {
       client.send(
         JSON.stringify({
           event: "update",
@@ -56,7 +57,7 @@ app.ws("/", (ws, req) => {
 
     players[userId] = data.player;
 
-    clients.getOtherClients(userId).forEach((client, id) => {
+    clients.getOtherClients(userId).forEach(client => {
       client.send(
         JSON.stringify({
           event: "update",

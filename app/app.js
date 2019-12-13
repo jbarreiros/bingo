@@ -11,7 +11,7 @@ import "./components/MiniBingoCard";
 import store from "./store/index";
 
 const registerModal = document.createElement("bingo-register-modal");
-registerModal.addEventListener("bingo-modal-close", ev => {
+registerModal.addEventListener("bingo-modal-close", () => {
   store.dispatch("openWebsocket", store.state.current);
 });
 

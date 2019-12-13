@@ -21,7 +21,7 @@ export default {
   openWebsocket(context, payload) {
     socket = new WebSocket("ws://localhost:8080");
 
-    socket.onopen = e => {
+    socket.onopen = () => {
       socket.send(JSON.stringify({ event: "register", player: payload }));
     };
 

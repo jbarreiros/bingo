@@ -4,12 +4,12 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./server.js",
     "stop": "pkill --signal SIGINT BingoApp",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm start & npm run build -- --watch --mode=development",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint *.js"
   },
   "author": "",
   "license": "ISC",
