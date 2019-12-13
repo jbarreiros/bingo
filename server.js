@@ -1,21 +1,19 @@
-const path = require("path");
-
 process.title = "BingoApp";
 
+const path = require("path");
 const express = require("express");
 const app = express();
 const expressWs = require("express-ws")(app);
 const Clients = require("./src/lib/WebsocketClients");
 const port = 8080;
 
-app.use(function(req, res, next) {
-  return next();
-});
-
 // frontend ------
 
+app.set("views", "./src/views");
+app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.get("/", (req, res) => res.sendFile("public/index.html"));
+const appRoutes = require("./src/routes/app"); // must be called after app.set("views")
+app.use("/", appRoutes);
 
 // websocket -----
 
@@ -46,7 +44,6 @@ app.ws("/", (ws, req) => {
 
     if (data.event === "register") {
       clients.saveClient(userId, ws);
-
       ws.send(
         JSON.stringify({
           event: "update",
