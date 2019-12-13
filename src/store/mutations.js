@@ -19,7 +19,9 @@ export default {
       ...state,
       current: {
         ...state.current,
-        selectedTiles: state.current.selectedTiles.filter(tile => tile !== tileIdx)
+        selectedTiles: state.current.selectedTiles.filter(
+          tile => tile !== tileIdx
+        )
       }
     };
   },
@@ -40,4 +42,4 @@ export default {
       }
     };
   }
-}
+};

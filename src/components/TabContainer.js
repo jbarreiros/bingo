@@ -1,5 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class TabContainer extends LitElement {
   static get properties() {
@@ -15,16 +15,18 @@ class TabContainer extends LitElement {
 
   constructor() {
     super();
-    this.key = '';
+    this.key = "";
     this.active = false;
-    store.subscribe(state => { this.active = this.key === state.app.page });
+    store.subscribe(state => {
+      this.active = this.key === state.app.page;
+    });
   }
 
   render() {
     return html`
       <style>
         :host {
-          display: ${this.active ? 'block' : 'none'}
+          display: ${this.active ? "block" : "none"};
         }
       </style>
       <slot></slot>
@@ -32,4 +34,4 @@ class TabContainer extends LitElement {
   }
 }
 
-customElements.define('bingo-tab-container', TabContainer);
+customElements.define("bingo-tab-container", TabContainer);

@@ -6,22 +6,22 @@ export class Store {
     this.state = {};
     this.callbacks = [];
 
-    if(params.hasOwnProperty('actions')) {
+    if ("actions" in params) {
       this.actions = params.actions;
     }
 
-    if(params.hasOwnProperty('mutations')) {
+    if ("mutations" in params) {
       this.mutations = params.mutations;
     }
 
     this.state = params.state;
     this.processCallbacks();
 
-    this.state = new Proxy((params.state || {}), {
+    this.state = new Proxy(params.state || {}, {
       set: (state, key, value) => {
         state[key] = value;
 
-        console.log('Do not mutate state!', key);
+        console.log("Do not mutate state!", key);
 
         return true;
       }
@@ -29,7 +29,7 @@ export class Store {
   }
 
   dispatch(actionKey, payload) {
-    if(typeof this.actions[actionKey] !== 'function') {
+    if (typeof this.actions[actionKey] !== "function") {
       console.error(`Action "${actionKey} doesn't exist.`);
       return;
     }
@@ -42,12 +42,12 @@ export class Store {
   }
 
   commit(mutationKey, payload) {
-    if(typeof this.mutations[mutationKey] !== 'function') {
+    if (typeof this.mutations[mutationKey] !== "function") {
       console.log(`Mutation "${mutationKey}" doesn't exist`);
       return;
     }
 
-    console.log('state change:', mutationKey, payload);
+    console.log("state change:", mutationKey, payload);
 
     const newState = this.mutations[mutationKey](this.state, payload);
     this.state = newState;
@@ -56,16 +56,18 @@ export class Store {
   }
 
   subscribe(callback) {
-    if(typeof callback !== 'function') {
-        console.error('You can only subscribe to Store changes with a valid function');
-        return;
+    if (typeof callback !== "function") {
+      console.error(
+        "You can only subscribe to Store changes with a valid function"
+      );
+      return;
     }
 
     this.callbacks.push(callback);
   }
 
   processCallbacks(data) {
-    if(!this.callbacks.length) {
+    if (!this.callbacks.length) {
       return;
     }
 

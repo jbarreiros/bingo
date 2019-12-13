@@ -1,5 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class BingoTile extends LitElement {
   static get properties() {
@@ -35,34 +35,36 @@ class BingoTile extends LitElement {
   constructor() {
     super();
     this.idx = null;
-    this.label = '';
+    this.label = "";
     this.selected = false;
-    ['click', 'keypress'].forEach(event => this.addEventListener(event, this.clickHandler));
+    ["click", "keypress"].forEach(event =>
+      this.addEventListener(event, this.clickHandler)
+    );
   }
 
   render() {
     return html`
       <style>
         :host {
-          background-color: ${this.selected ? '#2F3F52' : '#f0f1ec'};
-          color: ${this.selected ? '#C35947' : '#252422'};
+          background-color: ${this.selected ? "#2f3f52" : "#f0f1ec"};
+          color: ${this.selected ? "#c35947" : "#252422"};
         }
       </style>
       ${this.label}
     `;
   }
 
-  clickHandler(e) {
+  clickHandler() {
     this.selected = !this.selected;
 
     if (this.selected) {
-      store.dispatch('tileSelected', this.idx);
+      store.dispatch("tileSelected", this.idx);
     } else {
-      store.dispatch('tileUnselected', this.idx);
+      store.dispatch("tileUnselected", this.idx);
     }
 
-    store.dispatch('updatePlayer', store.state.current);
+    store.dispatch("updatePlayer", store.state.current);
   }
 }
 
-customElements.define('bingo-tile', BingoTile);
+customElements.define("bingo-tile", BingoTile);

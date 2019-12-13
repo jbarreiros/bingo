@@ -1,6 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
+import store from "../store/index";
 
 class MiniBingoCard extends LitElement {
   static get properties() {
@@ -32,14 +32,14 @@ class MiniBingoCard extends LitElement {
       }
 
       .bingo-tile.selected {
-        background-color: #2F3F52;
+        background-color: #2f3f52;
       }
 
       .bingo-player {
         text-align: center;
-        font-size: .8rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
-        padding-top: .2rem;
+        padding-top: 0.2rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -56,7 +56,9 @@ class MiniBingoCard extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.player = this.getPlayer(this.playerId);
-    store.subscribe(state => { this.player = this.getPlayer(this.playerId) });
+    store.subscribe(() => {
+      this.player = this.getPlayer(this.playerId);
+    });
   }
 
   render() {
@@ -72,9 +74,9 @@ class MiniBingoCard extends LitElement {
 
   renderTile(tileLabel, tileIndex) {
     const classes = {
-      'bingo-tile': true,
-      'selected': this.isTileSelected(tileIndex, this.player.selectedTiles)
-    }
+      "bingo-tile": true,
+      selected: this.isTileSelected(tileIndex, this.player.selectedTiles)
+    };
 
     return html`
       <div class="${classMap(classes)}"></div>
@@ -82,7 +84,9 @@ class MiniBingoCard extends LitElement {
   }
 
   getPlayer(playerId) {
-    return Object.values(store.state.players).find(player => player.id === playerId);
+    return Object.values(store.state.players).find(
+      player => player.id === playerId
+    );
   }
 
   isTileSelected(tileToMatch, tiles) {
@@ -90,4 +94,4 @@ class MiniBingoCard extends LitElement {
   }
 }
 
-customElements.define('bingo-mini-card', MiniBingoCard);
+customElements.define("bingo-mini-card", MiniBingoCard);

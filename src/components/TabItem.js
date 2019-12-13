@@ -1,6 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
+import store from "../store/index";
 
 class TabItem extends LitElement {
   static get properties() {
@@ -13,7 +13,8 @@ class TabItem extends LitElement {
 
   static get styles() {
     return css`
-      :host {}
+      :host {
+      }
 
       li {
         display: inline-block;
@@ -23,24 +24,26 @@ class TabItem extends LitElement {
         border: none;
         background: transparent;
         cursor: pointer;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         font-size: 1.1rem;
         font-weight: bold;
       }
 
       li:hover,
       .selected {
-        border-bottom: 0.2rem solid #D26D80;
+        border-bottom: 0.2rem solid #d26d80;
       }
     `;
   }
 
   constructor() {
     super();
-    this.key = '';
-    this.label = '';
+    this.key = "";
+    this.label = "";
     this.active = false;
-    store.subscribe(state => { this.active = this.key === state.app.page });
+    store.subscribe(state => {
+      this.active = this.key === state.app.page;
+    });
   }
 
   render() {
@@ -55,14 +58,14 @@ class TabItem extends LitElement {
     `;
   }
 
-  onClickHandler(ev) {
+  onClickHandler() {
     if (this.active) {
       // nothing to do
       return;
     }
 
-    store.dispatch('changePage', this.key);
+    store.dispatch("changePage", this.key);
   }
 }
 
-customElements.define('bingo-tab-item', TabItem);
+customElements.define("bingo-tab-item", TabItem);

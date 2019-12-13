@@ -1,5 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class RegisterModal extends LitElement {
   static get properties() {
@@ -35,15 +35,21 @@ class RegisterModal extends LitElement {
         <div slot="modal-content">
           <form @submit="${this.onSubmit}">
             <label id="player-name">Your Name:</label>
-            <input type="text" name="player-name" id="player-name" required autofocus>
+            <input
+              type="text"
+              name="player-name"
+              id="player-name"
+              required
+              autofocus
+            />
           </form>
         </div>
       </bingo-modal>
     `;
   }
 
-  onSubmit(e) {
-    const form = this.shadowRoot.querySelector('form');
+  onSubmit() {
+    const form = this.shadowRoot.querySelector("form");
 
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -52,12 +58,15 @@ class RegisterModal extends LitElement {
 
     const formData = new FormData(form);
 
-    store.dispatch('setPlayerName', formData.get('player-name'));
+    store.dispatch("setPlayerName", formData.get("player-name"));
 
-    const modal = this.shadowRoot.querySelector('bingo-modal');
-    const event = new CustomEvent('bingo-modal-close', {bubbles: true, composed: true});
+    const modal = this.shadowRoot.querySelector("bingo-modal");
+    const event = new CustomEvent("bingo-modal-close", {
+      bubbles: true,
+      composed: true
+    });
     modal.dispatchEvent(event);
   }
 }
 
-customElements.define('bingo-register-modal', RegisterModal);
+customElements.define("bingo-register-modal", RegisterModal);

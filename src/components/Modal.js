@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from "lit-element";
 
 class Modal extends LitElement {
   static get properties() {
@@ -29,7 +29,7 @@ class Modal extends LitElement {
         left: 5vw;
         width: 90vw;
 
-        background-color: #F0F1EC;
+        background-color: #f0f1ec;
         border-radius: 4px;
         padding: 2rem;
       }
@@ -68,7 +68,7 @@ class Modal extends LitElement {
 
   constructor() {
     super();
-    this.addEventListener('bingo-modal-close', this.onClose);
+    this.addEventListener("bingo-modal-close", this.onClose);
   }
 
   render() {
@@ -81,21 +81,23 @@ class Modal extends LitElement {
           <slot name="modal-content"></slot>
         </div>
         <footer>
-          <button type="button" @click="${this.onSubmit}">${this.submitText}</button>
+          <button type="button" @click="${this.onSubmit}">
+            ${this.submitText}
+          </button>
         </footer>
       </section>
       <div class="modal-overlay"></div>
     `;
   }
 
-  onSubmit(e) {
-    const event = new CustomEvent('bingo-modal-submit', {});
+  onSubmit() {
+    const event = new CustomEvent("bingo-modal-submit", {});
     this.dispatchEvent(event);
   }
 
-  onClose(e) {
+  onClose() {
     this.remove();
   }
 }
 
-customElements.define('bingo-modal', Modal);
+customElements.define("bingo-modal", Modal);

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from "lit-element";
 
 class Tabs extends LitElement {
   static get properties() {
@@ -31,4 +31,4 @@ class Tabs extends LitElement {
   }
 }
 
-customElements.define('bingo-tabs', Tabs);
+customElements.define("bingo-tabs", Tabs);

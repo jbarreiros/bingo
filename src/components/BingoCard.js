@@ -1,10 +1,9 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class BingoCard extends LitElement {
   static get properties() {
-    return {
-    };
+    return {};
   }
 
   static get styles() {
@@ -38,18 +37,25 @@ class BingoCard extends LitElement {
 
   render() {
     return html`
-      ${[...'bingo'].map(i => html`<div class="letter">${i}</div>`)}
-      ${store.state.current.tiles.map((tileLabel, idx) => html`
-        <bingo-tile
-          idx="${idx}"
-          label="${tileLabel}"
-          tabindex="0"
-          aria-role="button"
-          aria-pressed="false"
-        ></bingo-title>
-      `)}
+      ${[..."bingo"].map(
+        i => html`
+          <div class="letter">${i}</div>
+        `
+      )}
+      ${store.state.current.tiles.map(
+        (tileLabel, idx) => html`
+          <bingo-tile
+            idx="${idx}"
+            label="${tileLabel}"
+            tabindex="0"
+            aria-role="button"
+            aria-pressed="false"
+          >
+          </bingo-title>
+        `
+      )}
     `;
   }
 }
 
-customElements.define('bingo-card', BingoCard);
+customElements.define("bingo-card", BingoCard);

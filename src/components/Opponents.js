@@ -1,5 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class Opponents extends LitElement {
   static get properties() {
@@ -28,24 +28,28 @@ class Opponents extends LitElement {
   constructor() {
     super();
     this.players = store.state.players;
-    store.subscribe(state => this.players = state.players);
+    store.subscribe(state => (this.players = state.players));
   }
 
   render() {
-    const players = Object.values(this.players).filter(i => i.id !== store.state.current.id);
+    const players = Object.values(this.players).filter(
+      i => i.id !== store.state.current.id
+    );
 
     if (players.length === 0) {
-      return html`No one has joined yet!`;
+      return html`
+        No one has joined yet!
+      `;
     }
 
     return html`
-      ${players.map((player, i) => html`
-        <bingo-mini-card
-          playerId="${player.id}"
-        ></bingo-mini-card>
-      `)}
+      ${players.map(
+        player => html`
+          <bingo-mini-card playerId="${player.id}"></bingo-mini-card>
+        `
+      )}
     `;
   }
 }
 
-customElements.define('bingo-opponents', Opponents);
+customElements.define("bingo-opponents", Opponents);

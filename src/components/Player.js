@@ -1,5 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
-import store from '../store/index';
+import { LitElement, html, css } from "lit-element";
+import store from "../store/index";
 
 class Player extends LitElement {
   static get properties() {
@@ -9,14 +9,15 @@ class Player extends LitElement {
   }
 
   static get styles() {
-    return css`
-    `;
+    return css``;
   }
 
   constructor() {
     super();
-    this.name = '';
-    store.subscribe(state => { this.name = state.current.name });
+    this.name = "";
+    store.subscribe(state => {
+      this.name = state.current.name;
+    });
   }
 
   render() {
@@ -26,4 +27,4 @@ class Player extends LitElement {
   }
 }
 
-customElements.define('bingo-player', Player);
+customElements.define("bingo-player", Player);

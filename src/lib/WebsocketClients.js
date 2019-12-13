@@ -8,7 +8,9 @@ module.exports = class WebsocketClients {
   }
 
   removeClient(clientToRemove) {
-    const [clientId] = [...this.clients.entries()].find(([id, client]) => clientToRemove === client);
+    const [clientId] = [...this.clients.values()].find(
+      client => clientToRemove === client
+    );
     this.clients.delete(clientId);
   }
 
@@ -20,11 +22,13 @@ module.exports = class WebsocketClients {
   }
 
   getClientId(clientToFind) {
-    const [clientId] = [...this.clients.entries()].find(([id, client]) => clientToFind === client);
+    const [clientId] = [...this.clients.values()].find(
+      client => clientToFind === client
+    );
     return clientId;
   }
 
   getClientIds() {
     return [...this.clients.keys()];
   }
-}
+};
