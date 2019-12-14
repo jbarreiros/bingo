@@ -1,3 +1,5 @@
+/* global pageData */
+
 import "./components/BingoTile";
 import "./components/BingoCard";
 import "./components/Tabs";
@@ -10,7 +12,7 @@ import "./components/Player";
 import "./components/MiniBingoCard";
 import store from "./store/index";
 
-// FIXME grab list of tiles from page and pass into store.state
+store.dispatch("setPlayerTiles", pageData.tiles);
 
 const registerModal = document.createElement("bingo-register-modal");
 registerModal.addEventListener("bingo-modal-close", () => {

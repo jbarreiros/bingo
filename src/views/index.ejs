@@ -27,6 +27,11 @@
       <p><%= title %> is fictional and does not depict any actual company or employees.</p>
     </footer>
 
+    <script>
+      const pageData = {
+        tiles: <%-JSON.stringify(playerTiles)%>
+      };
+    </script>
     <script src="./app.js"></script>
   </body>
 </html>

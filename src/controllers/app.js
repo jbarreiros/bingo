@@ -1,15 +1,37 @@
 exports.index = function(req, res) {
-  if (!res.gameConfig) {
-    // FIXME error
-  }
-
   if (res.gameConfig.allowPlayers) {
-    res.render("index", res.gameConfig);
+    const { tiles, freeTile } = res.gameConfig;
+    const playerTiles = generatePlayerTiles(tiles, freeTile);
+    renderPage(res, "index", { playerTiles });
   } else {
-    res.render("no-game", res.gameConfig);
+    renderPage(res, "no-game");
   }
 };
 
 exports.listTiles = function(req, res) {
-  res.render("tiles", res.gameConfig);
+  renderPage(res, "tiles");
 };
+
+/**
+ *
+ * @param {http.ServerResponse} res
+ * @param {string} pageName
+ * @param {object} data
+ */
+function renderPage(res, pageName, data = {}) {
+  const { title } = res.gameConfig;
+  const templateData = { title, ...data };
+
+  res.render(pageName, templateData);
+}
+
+/**
+ * @param {string[]} tiles
+ * @param {string} freeTile
+ */
+function generatePlayerTiles(tiles, freeTile) {
+  const randomizedTiles = tiles.sort(() => Math.random() - 0.5);
+  randomizedTiles.splice(12, 0, freeTile);
+
+  return randomizedTiles;
+}

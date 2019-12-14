@@ -56,8 +56,15 @@ class MiniBingoCard extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.player = this.getPlayer(this.playerId);
+
     store.subscribe(() => {
-      this.player = this.getPlayer(this.playerId);
+      const player = this.getPlayer(this.playerId);
+
+      // Don't allow `this.player` being set to "undefined", which would cause
+      // a bad re-render.
+      if (player) {
+        this.player = player;
+      }
     });
   }
 
@@ -84,9 +91,7 @@ class MiniBingoCard extends LitElement {
   }
 
   getPlayer(playerId) {
-    return Object.values(store.state.players).find(
-      player => player.id === playerId
-    );
+    return store.state.players.find(player => player.id === playerId);
   }
 
   isTileSelected(tileToMatch, tiles) {

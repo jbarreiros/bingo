@@ -41,5 +41,15 @@ export default {
         name: playerName
       }
     };
+  },
+
+  setPlayerTiles(state, tiles) {
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        tiles
+      }
+    };
   }
 };

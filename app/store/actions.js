@@ -17,6 +17,10 @@ export default {
     context.commit("setPlayerName", playerName);
   },
 
+  setPlayerTiles(context, tiles) {
+    context.commit("setPlayerTiles", tiles);
+  },
+
   // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
   openWebsocket(context, payload) {
     socket = new WebSocket("ws://localhost:8080");
