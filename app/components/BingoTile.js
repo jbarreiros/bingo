@@ -4,7 +4,7 @@ import store from "../store/index";
 class BingoTile extends LitElement {
   static get properties() {
     return {
-      idx: Number,
+      tileIndex: Number,
       label: String,
       selected: Boolean
     };
@@ -34,7 +34,7 @@ class BingoTile extends LitElement {
 
   constructor() {
     super();
-    this.idx = null;
+    this.tileIndex = null;
     this.label = "";
     this.selected = false;
     ["click", "keypress"].forEach(event =>
@@ -58,9 +58,9 @@ class BingoTile extends LitElement {
     this.selected = !this.selected;
 
     if (this.selected) {
-      store.dispatch("tileSelected", this.idx);
+      store.dispatch("tileSelected", this.tileIndex);
     } else {
-      store.dispatch("tileUnselected", this.idx);
+      store.dispatch("tileUnselected", this.tileIndex);
     }
 
     store.dispatch("updatePlayer", store.state.current);
