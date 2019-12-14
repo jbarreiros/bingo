@@ -10,6 +10,8 @@ import "./components/Player";
 import "./components/MiniBingoCard";
 import store from "./store/index";
 
+// FIXME grab list of tiles from page and pass into store.state
+
 const registerModal = document.createElement("bingo-register-modal");
 registerModal.addEventListener("bingo-modal-close", () => {
   store.dispatch("openWebsocket", store.state.current);

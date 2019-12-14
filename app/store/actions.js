@@ -29,7 +29,7 @@ export default {
       const data = JSON.parse(ev.data);
       const players = data.data;
 
-      if (Object.keys(players).length) {
+      if (players.length) {
         context.commit("updatePlayers", players);
       }
     };

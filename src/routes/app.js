@@ -1,6 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const fs = require("fs");
+const controller = require("../controllers/app");
+const router = express.Router();
 
 router.use((req, res, next) => {
   const gameConfigRaw = fs.readFileSync("./game.json");
@@ -8,20 +9,9 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/", (req, res) => {
-  if (!res.gameConfig) {
-    // FIXME error
-  }
-
-  if (res.gameConfig.allowPlayers) {
-    res.render("index", res.gameConfig);
-  } else {
-    res.render("no-game", res.gameConfig);
-  }
-});
-
-router.get("/tiles", (req, res) => {
-  res.render("tiles", res.gameConfig);
-});
+// prettier-ignore
+router
+  .get("/", controller.index)
+  .get("/tiles", controller.listTiles);
 
 module.exports = router;
