@@ -9,7 +9,7 @@ exports.onClose = function(client, clients, players) {
   clients.removeClient(client);
   players.delete(userId);
 
-  // send updated players list (without the above removed player) to all players.
+  // send updated players list to all players
   sendUpdateToOtherPlayers(userId, clients, players);
 };
 
@@ -31,6 +31,7 @@ exports.onMessage = function(client, clients, players, ev) {
     sendUpdate(client, players);
   }
 
+  // send updated players list to all players
   sendUpdateToOtherPlayers(userId, clients, players);
 };
 

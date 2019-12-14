@@ -55,17 +55,24 @@ class MiniBingoCard extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+
+    // FIXME can the initial player object be injected into the element instead?
     this.player = this.getPlayer(this.playerId);
 
     store.subscribe(() => {
-      const player = this.getPlayer(this.playerId);
-
-      // Don't allow `this.player` being set to "undefined", which would cause
-      // a bad re-render.
-      if (player) {
-        this.player = player;
-      }
+      this.player = this.getPlayer(this.playerId);
     });
+  }
+
+  shouldUpdate(changedProperties) {
+    // When a player leaves, this component goes through one last update where
+    // the player prop will be undefined (because there is no longer a match in
+    // the `store.state.players`). Returning false prevents a render.
+    if (changedProperties.get("player") === "undefined") {
+      return false;
+    }
+
+    return true;
   }
 
   render() {
