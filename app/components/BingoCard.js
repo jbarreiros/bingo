@@ -43,9 +43,9 @@ class BingoCard extends LitElement {
         `
       )}
       ${store.state.current.tiles.map(
-        (tileLabel, idx) => html`
+        (tileLabel, tileIndex) => html`
           <bingo-tile
-            idx="${idx}"
+            tileIndex="${tileIndex}"
             label="${tileLabel}"
             tabindex="0"
             aria-role="button"
