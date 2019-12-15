@@ -1,60 +1,66 @@
-// https://css-tricks.com/build-a-state-management-system-with-vanilla-javascript/
+/**
+ * Homegrown state-management... because, why not!?
+ * Inspired by https://css-tricks.com/build-a-state-management-system-with-vanilla-javascript/
+ */
 export class Store {
+  /**
+   * @param {object} params
+   * @property {object} params.actions
+   * @property {object} params.mutations
+   * @property {object} params.state
+   */
   constructor(params) {
-    this.actions = {};
-    this.mutations = {};
-    this.state = {};
+    this.actions = params.actions || {};
+    this.mutations = params.mutations || {};
+    this.state = params.state || {};
     this.callbacks = [];
 
-    if ("actions" in params) {
-      this.actions = params.actions;
-    }
-
-    if ("mutations" in params) {
-      this.mutations = params.mutations;
-    }
-
-    this.state = params.state;
-    this.processCallbacks();
-
-    this.state = new Proxy(params.state || {}, {
+    this.state = new Proxy(this.state, {
       set: (state, key, value) => {
         state[key] = value;
-
-        console.log("Do not mutate state!", key);
+        console.warning("Do not mutate state!", key);
 
         return true;
       }
     });
   }
 
+  /**
+   * @param {string} actionKey The action's function name
+   * @param {object} payload
+   */
   dispatch(actionKey, payload) {
     if (typeof this.actions[actionKey] !== "function") {
       console.error(`Action "${actionKey} doesn't exist.`);
       return;
     }
 
-    console.group(`dispatching ACTION: ${actionKey}`);
-
+    console.info("Dispatching action", actionKey, payload);
     this.actions[actionKey](this, payload);
-
-    console.groupEnd();
   }
 
+  /**
+   * @param {string} mutationKey - The mutation function's name
+   * @param {object} payload
+   */
   commit(mutationKey, payload) {
     if (typeof this.mutations[mutationKey] !== "function") {
-      console.log(`Mutation "${mutationKey}" doesn't exist`);
+      console.error(`Mutation "${mutationKey}" doesn't exist`);
       return;
     }
 
-    console.log("state change:", mutationKey, payload);
+    console.info("Committing state change", mutationKey, payload);
 
     const newState = this.mutations[mutationKey](this.state, payload);
     this.state = newState;
 
+    // notify all subscribers
     this.processCallbacks(this.state);
   }
 
+  /**
+   * @param {Function} callback
+   */
   subscribe(callback) {
     if (typeof callback !== "function") {
       console.error(
@@ -66,11 +72,14 @@ export class Store {
     this.callbacks.push(callback);
   }
 
-  processCallbacks(data) {
+  /**
+   * @param {object} state
+   */
+  processCallbacks(state) {
     if (!this.callbacks.length) {
       return;
     }
 
-    this.callbacks.forEach(callback => callback(data));
+    this.callbacks.forEach(callback => callback(state));
   }
 }

@@ -1,26 +1,31 @@
 export default {
   setCurrentPage(state, newPage) {
-    return { ...state, app: { ...state.app, page: newPage } };
-  },
-
-  pushTileToSelectedList(state, tileIdx) {
-    // not using push(), to ensure immutability
     return {
       ...state,
-      current: {
-        ...state.current,
-        selectedTiles: [...state.current.selectedTiles, tileIdx]
+      app: {
+        ...state.app,
+        page: newPage
       }
     };
   },
 
-  popTileFromSelectedList(state, tileIdx) {
+  pushTileToSelectedList(state, tileIndex) {
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        selectedTiles: [...state.current.selectedTiles, tileIndex]
+      }
+    };
+  },
+
+  popTileFromSelectedList(state, tileIndex) {
     return {
       ...state,
       current: {
         ...state.current,
         selectedTiles: state.current.selectedTiles.filter(
-          tile => tile !== tileIdx
+          tile => tile !== tileIndex
         )
       }
     };

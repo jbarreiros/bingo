@@ -6,7 +6,7 @@ export default {
   },
   current: {
     id: uuid(),
-    name: "Unknown Player",
+    name: "",
     tiles: [],
     selectedTiles: []
   },
