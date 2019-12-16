@@ -9,7 +9,8 @@ exports.index = function(req, res) {
 };
 
 exports.listTiles = function(req, res) {
-  renderPage(res, "tiles");
+  const { tiles } = res.gameConfig;
+  renderPage(res, "tiles", { tiles });
 };
 
 /**
@@ -19,8 +20,8 @@ exports.listTiles = function(req, res) {
  * @param {object} data
  */
 function renderPage(res, pageName, data = {}) {
-  const { title } = res.gameConfig;
-  const templateData = { title, ...data };
+  const { name } = res.gameConfig;
+  const templateData = { name, ...data };
 
   res.render(pageName, templateData);
 }

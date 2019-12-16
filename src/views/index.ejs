@@ -1,37 +1,26 @@
-<!doctype html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./app.css">
-  </head>
-  <body>
-    <header class="page-header">
-      <bingo-tabs>
-        <bingo-tab-item key="card" label="My Card"></bingo-tab-item>
-        <bingo-tab-item key="opponents" label="Opponents"></bingo-tab-item>
-      </bingo-tabs>
-      <bingo-player></bingo-player>
-    </header>
+<% layout('layout') -%>
 
-    <bingo-tab-container key="card">
-      <bingo-card></bingo-card>
-    </bingo-tab-container>
+<header class="page-header">
+  <bingo-tabs>
+    <bingo-tab-item key="card" label="My Card"></bingo-tab-item>
+    <bingo-tab-item key="opponents" label="Opponents"></bingo-tab-item>
+  </bingo-tabs>
+  <bingo-player></bingo-player>
+</header>
 
-    <bingo-tab-container key="opponents">
-      <bingo-opponents></bingo-opponents>
-    </bingo-tab-container>
+<bingo-tab-container key="card">
+  <bingo-card></bingo-card>
+</bingo-tab-container>
 
-    <footer class="page-footer">
-      <p><%= title %> is fictional and does not depict any actual company or employees.</p>
-    </footer>
+<bingo-tab-container key="opponents">
+  <bingo-opponents></bingo-opponents>
+</bingo-tab-container>
 
-    <script>
-      const pageData = {
-        tiles: <%-JSON.stringify(playerTiles)%>
-      };
-    </script>
-    <script src="./app.js"></script>
-  </body>
-</html>
+<% block('footerScripts', `
+<script>
+  const pageData = {
+    tiles: ${JSON.stringify(playerTiles)}
+  };
+</script>
+<script src="./app.js"></script>
+`) -%>
