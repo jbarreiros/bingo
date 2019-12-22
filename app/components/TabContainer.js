@@ -9,10 +9,6 @@ class TabContainer extends LitElement {
     };
   }
 
-  static get styles() {
-    return css``;
-  }
-
   constructor() {
     super();
     this.key = "";

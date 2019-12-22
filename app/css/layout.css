@@ -1,7 +1,3 @@
-:root {
-  /* --not-mobile-breakpoint: 35em; */
-}
-
 body {
   background-color: #d6d7d3;
   color: #2F3F52;
@@ -10,9 +6,15 @@ body {
   padding: 0;
 }
 
-@media only screen and (min-width: 35em) {
-  body {
-    padding: 1rem;
+.page-wrapper {
+  width: auto;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 750px) {
+  .page-wrapper {
+    width: 750px;
   }
 }
 
@@ -20,17 +22,6 @@ body {
   text-align: center;
   margin-bottom: 2rem;
 }
-
-bingo-player,
-bingo-tabs {
-  display: inline-block;
-}
-
-/*bingo-player::before {
-  content: '|';
-  display: inline;
-  padding-right: 16px;
-}*/
 
 .page-footer {
   font-size: .8rem;

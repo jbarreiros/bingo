@@ -7,7 +7,11 @@ class Tabs extends LitElement {
 
   static get styles() {
     return css`
-      ul {
+      :host {
+        display: inline-block;
+      }
+
+      .tabs {
         display: inline-block;
         margin: 0;
         padding-left: 0;
@@ -23,7 +27,7 @@ class Tabs extends LitElement {
   render() {
     return html`
       <nav>
-        <ul>
+        <ul class="tabs">
           <slot></slot>
         </ul>
       </nav>

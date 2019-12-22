@@ -9,7 +9,11 @@ class Player extends LitElement {
   }
 
   static get styles() {
-    return css``;
+    return css`
+      :host {
+        display: inline-block;
+      }
+    `;
   }
 
   constructor() {

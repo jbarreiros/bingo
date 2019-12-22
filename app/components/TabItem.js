@@ -14,13 +14,14 @@ class TabItem extends LitElement {
   static get styles() {
     return css`
       :host {
-      }
-
-      li {
         display: inline-block;
       }
 
-      button {
+      .tab {
+        display: inline-block;
+      }
+
+      .tab__button {
         border: none;
         background: transparent;
         cursor: pointer;
@@ -29,8 +30,8 @@ class TabItem extends LitElement {
         font-weight: bold;
       }
 
-      li:hover,
-      .selected {
+      .tab:hover,
+      .tab--selected {
         border-bottom: 0.2rem solid #d26d80;
       }
     `;
@@ -47,11 +48,15 @@ class TabItem extends LitElement {
   }
 
   render() {
-    const classes = { selected: this.active };
+    const classes = { tab: true, "tab--selected": this.active };
 
     return html`
       <li class="${classMap(classes)}">
-        <button type="button" @click="${this.onClickHandler}">
+        <button
+          type="button"
+          class="tab__button"
+          @click="${this.onClickHandler}"
+        >
           ${this.label}
         </button>
       </li>

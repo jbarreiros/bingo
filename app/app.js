@@ -12,6 +12,11 @@ import "./components/Player";
 import "./components/MiniBingoCard";
 import store from "./store/index";
 
+// styles
+import "./css/variables.css";
+import "./css/layout.css";
+import "./css/game-off.css";
+
 store.dispatch("setPlayerTiles", pageData.tiles);
 
 const registerModal = document.createElement("bingo-register-modal");

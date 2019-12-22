@@ -21,7 +21,7 @@ class BingoTile extends LitElement {
         text-transform: uppercase;
         overflow: hidden;
         cursor: pointer;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
       }
 
       @media only screen and (min-width: 750px) {

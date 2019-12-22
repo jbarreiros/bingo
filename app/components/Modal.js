@@ -43,15 +43,15 @@ class Modal extends LitElement {
         }
       }
 
-      h1 {
+      .modal__title {
         margin-top: 0;
       }
 
-      footer {
+      .modal__footer {
         margin-top: 1rem;
       }
 
-      button {
+      .modal__submit {
         border: 0;
         border-radius: 0.2rem;
         font-size: 1rem;
@@ -59,8 +59,8 @@ class Modal extends LitElement {
         background-color: lightgreen;
       }
 
-      button:hover,
-      button:focus {
+      .modal__submit:hover,
+      .modal__submit:focus {
         background-color: #00ff00;
       }
     `;
@@ -74,14 +74,14 @@ class Modal extends LitElement {
   render() {
     return html`
       <section class="modal">
-        <header>
-          <h1>${this.modalTitle}</h1>
+        <header class="modal__header">
+          <h1 class="modal__title">${this.modalTitle}</h1>
         </header>
-        <div class="modal-content">
+        <div class="modal__content">
           <slot name="modal-content"></slot>
         </div>
-        <footer>
-          <button type="button" @click="${this.onSubmit}">
+        <footer class="modal__footer">
+          <button type="button" class="modal__submit" @click="${this.onSubmit}">
             ${this.submitText}
           </button>
         </footer>

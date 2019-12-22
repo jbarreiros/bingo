@@ -31,7 +31,7 @@ class MiniBingoCard extends LitElement {
         background-color: #f0f1ec;
       }
 
-      .bingo-tile.selected {
+      .bingo-tile.bingo-tile--selected {
         background-color: #2f3f52;
       }
 
@@ -89,7 +89,10 @@ class MiniBingoCard extends LitElement {
   renderTile(tileLabel, tileIndex) {
     const classes = {
       "bingo-tile": true,
-      selected: this.isTileSelected(tileIndex, this.player.selectedTiles)
+      "bingo-tile--selected": this.isTileSelected(
+        tileIndex,
+        this.player.selectedTiles
+      )
     };
 
     return html`
