@@ -23,7 +23,7 @@ export default {
 
   // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
   openWebsocket(store, payload) {
-    socket = new WebSocket("ws://localhost:8080");
+    socket = new WebSocket(`ws://${location.host}`);
 
     socket.onopen = () => {
       socket.send(
