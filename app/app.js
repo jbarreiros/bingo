@@ -12,8 +12,7 @@ import "./components/Player";
 import "./components/MiniBingoCard";
 import store from "./store/index";
 
-// styles
-import "./css/variables.css";
+// page styles
 import "./css/layout.css";
 import "./css/game-off.css";
 

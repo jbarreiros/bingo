@@ -15,7 +15,7 @@ class BingoCard extends LitElement {
         justify-content: center;
       }
 
-      @media only screen and (min-width: 750px) {
+      @media only screen and (min-width: env(--breakpoint)) {
         :host {
           grid-template-columns: repeat(5, 150px);
           grid-template-rows: auto repeat(5, 150px);

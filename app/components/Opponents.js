@@ -16,10 +16,10 @@ class Opponents extends LitElement {
         justify-content: center;
       }
 
-      @media only screen and (min-width: 750px) {
+      @media only screen and (min-width: env(--breakpoint)) {
         :host {
           margin: 0 auto;
-          width: 750px;
+          width: env(--breakpoint);
         }
       }
     `;
