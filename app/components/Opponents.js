@@ -28,7 +28,19 @@ class Opponents extends LitElement {
   constructor() {
     super();
     this.players = store.state.players;
-    store.subscribe(state => (this.players = state.players));
+
+    // prebind store callback
+    this.onStoreUpdated = this.onStoreUpdated.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    store.subscribe(this.onStoreUpdated);
+  }
+
+  disconnectedCallback() {
+    store.unsubscribe(this.onStoreUpdated);
+    super.disconnectedCallback();
   }
 
   render() {
@@ -49,6 +61,10 @@ class Opponents extends LitElement {
         `
       )}
     `;
+  }
+
+  onStoreUpdated() {
+    this.players = store.state.players;
   }
 }
 

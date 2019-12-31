@@ -51,24 +51,30 @@ class MiniBingoCard extends LitElement {
     super();
     this.playerId = null;
     this.player = null;
+
+    // prebind store callback
+    this.setPlayerProperty = this.setPlayerProperty.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
 
     // FIXME can the initial player object be injected into the element instead?
-    this.player = this.getPlayer(this.playerId);
+    this.setPlayerProperty();
 
-    store.subscribe(() => {
-      this.player = this.getPlayer(this.playerId);
-    });
+    store.subscribe(this.setPlayerProperty);
+  }
+
+  disconnectedCallback() {
+    store.unsubscribe(this.setPlayerProperty);
+    super.disconnectedCallback();
   }
 
   shouldUpdate(changedProperties) {
     // When a player leaves, this component goes through one last update where
     // the player prop will be undefined (because there is no longer a match in
     // the `store.state.players`). Returning false prevents a render.
-    if (changedProperties.get("player") === "undefined") {
+    if (typeof this.player === "undefined") {
       return false;
     }
 
@@ -100,12 +106,14 @@ class MiniBingoCard extends LitElement {
     `;
   }
 
-  getPlayer(playerId) {
-    return store.state.players.find(player => player.id === playerId);
-  }
-
   isTileSelected(tileToMatch, tiles) {
     return tiles.find(tile => tile === String(tileToMatch)) !== undefined;
+  }
+
+  setPlayerProperty() {
+    this.player = store.state.players.find(
+      player => player.id === this.playerId
+    );
   }
 }
 

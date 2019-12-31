@@ -28,7 +28,7 @@ class RegisterModal extends LitElement {
   render() {
     return html`
       <bingo-modal
-        modalTitle="Clock in! It's time to play!"
+        modalTitle="Announce Thyself!"
         submitText="Join the Game!"
         @bingo-modal-submit="${this.onSubmit}"
       >

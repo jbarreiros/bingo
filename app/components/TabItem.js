@@ -42,9 +42,19 @@ class TabItem extends LitElement {
     this.key = "";
     this.label = "";
     this.active = false;
-    store.subscribe(state => {
-      this.active = this.key === state.app.page;
-    });
+
+    // prebind store callback
+    this.onStoreUpdated = this.onStoreUpdated.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    store.subscribe(this.onStoreUpdated);
+  }
+
+  disconnectedCallback() {
+    store.unsubscribe(this.onStoreUpdated);
+    super.disconnectedCallback();
   }
 
   render() {
@@ -58,6 +68,7 @@ class TabItem extends LitElement {
           @click="${this.onClickHandler}"
         >
           ${this.label}
+          <slot name="badge"></slot>
         </button>
       </li>
     `;
@@ -70,6 +81,10 @@ class TabItem extends LitElement {
     }
 
     store.dispatch("changePage", this.key);
+  }
+
+  onStoreUpdated() {
+    this.active = this.key === store.state.app.page;
   }
 }
 

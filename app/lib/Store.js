@@ -73,6 +73,17 @@ export class Store {
   }
 
   /**
+   * @param {Function} callback
+   */
+  unsubscribe(callback) {
+    if (typeof callback !== "function") {
+      return;
+    }
+
+    this.callbacks = this.callbacks.filter(item => item !== callback);
+  }
+
+  /**
    * @param {object} state
    */
   processCallbacks(state) {

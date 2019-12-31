@@ -10,6 +10,7 @@ import "./components/Modal";
 import "./components/RegisterModal";
 import "./components/Player";
 import "./components/MiniBingoCard";
+import "./components/OpponentsBadge";
 import store from "./store/index";
 
 // page styles

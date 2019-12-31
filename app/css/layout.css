@@ -7,6 +7,9 @@ body {
 }
 
 .page-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: calc(100vh - 2rem);
   width: auto;
   padding: 1rem;
   margin: 0 auto;

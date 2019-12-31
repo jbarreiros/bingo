@@ -1,24 +1,30 @@
 import { LitElement, html, css } from "lit-element";
 import store from "../store/index";
 
-class Player extends LitElement {
+class OpponentsBadge extends LitElement {
   static get properties() {
     return {
-      name: String
+      numOpponents: Number
     };
   }
 
   static get styles() {
     return css`
-      :host {
-        display: inline-block;
+      .badge {
+        background-color: #f0f1ec;
+        border-radius: 50%;
+        font-size: 60%;
+        padding: 0.2rem 0.4rem;
+        position: relative;
+        top: -0.5rem;
+        margin-left: -0.5rem;
       }
     `;
   }
 
   constructor() {
     super();
-    this.name = "";
+    this.numOpponents = 0;
 
     // prebind store callback
     this.onStoreUpdated = this.onStoreUpdated.bind(this);
@@ -36,13 +42,13 @@ class Player extends LitElement {
 
   render() {
     return html`
-      &#128100; ${this.name}
+      <span class="badge">${this.numOpponents}</span>
     `;
   }
 
   onStoreUpdated() {
-    this.name = store.state.current.name;
+    this.numOpponents = store.state.players.length - 1;
   }
 }
 
-customElements.define("bingo-player", Player);
+customElements.define("bingo-opponents-badge", OpponentsBadge);
