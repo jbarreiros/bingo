@@ -47,7 +47,8 @@ class OpponentsBadge extends LitElement {
   }
 
   onStoreUpdated() {
-    this.numOpponents = store.state.players.length - 1;
+    const players = store.state.players.length - 1; // subtract current player
+    this.numOpponents = players > -1 ? players : 0;
   }
 }
 
