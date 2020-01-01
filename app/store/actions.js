@@ -23,7 +23,9 @@ export default {
 
   // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
   openWebsocket(store, payload) {
-    socket = new WebSocket(`ws://${location.host}`);
+    const protocol =
+      window.location.protocol.toLowerCase() === "https:" ? "wss" : "ws";
+    socket = new WebSocket(`${protocol}://${location.host}`);
 
     socket.onopen = () => {
       socket.send(

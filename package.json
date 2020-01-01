@@ -1,7 +1,7 @@
 {
   "name": "bingo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A silly pile of code trying to pass itself off as a multi-player bingo game.",
   "private": true,
   "scripts": {
     "start": "node ./server.js",
@@ -15,7 +15,7 @@
     "clean": "rimraf public/*.{css,js}",
     "lint": "eslint *.js"
   },
-  "author": "",
+  "author": "John Barreiros <johnbarreiros2@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.7",
