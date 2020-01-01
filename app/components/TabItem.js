@@ -25,14 +25,21 @@ class TabItem extends LitElement {
         border: none;
         background: transparent;
         cursor: pointer;
-        padding: 0.5rem 1rem;
-        font-size: 1.1rem;
+        padding: 0.5rem;
+        font-size: 0.9rem;
         font-weight: bold;
       }
 
       .tab:hover,
       .tab--selected {
         border-bottom: 0.2rem solid #d26d80;
+      }
+
+      @media only screen and (min-width: env(--breakpoint)) {
+        .tab__button {
+          padding: 0.5rem 1rem;
+          font-size: 1.1rem;
+        }
       }
     `;
   }

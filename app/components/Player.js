@@ -12,6 +12,21 @@ class Player extends LitElement {
     return css`
       :host {
         display: inline-block;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        max-width: 5rem;
+        width: auto;
+      }
+
+      @media only screen and (min-width: env(--breakpoint)) {
+        :host {
+          max-width: 10rem;
+        }
       }
     `;
   }

@@ -10,8 +10,8 @@ class BingoCard extends LitElement {
     return css`
       :host {
         display: grid;
-        grid-template-columns: repeat(5, 20%);
-        grid-template-rows: auto repeat(5, 20%);
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto repeat(5, 1fr);
         justify-content: center;
       }
 
