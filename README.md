@@ -1,4 +1,4 @@
-A silly pile of code trying to pass itself off as a multi-player bingo game. I wrote this project to mess around with LitElement, web components and CSS-in-JS.
+A silly pile of code trying to pass itself off as a multi-player bingo game. I wrote this project to mess around with web components.
 
 ## Architecture
 

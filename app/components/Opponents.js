@@ -50,7 +50,7 @@ class Opponents extends LitElement {
 
     if (players.length === 0) {
       return html`
-        No one has joined yet!
+        <p>No one has joined yet!</p>
       `;
     }
 
