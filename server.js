@@ -12,9 +12,6 @@ const HTTP_HOSTNAME = process.env.HOST || "localhost";
 const HTTP_PORT = process.env.PORT || 8080;
 const IS_PROD = process.env.NODE_ENV === "production";
 
-// make it easier to kill the process; only really useful for development
-process.title = "BingoApp";
-
 // frontend
 app.set("views", "./src/views");
 app.engine("ejs", engine);
