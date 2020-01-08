@@ -4,7 +4,7 @@
   "description": "A silly pile of code trying to pass itself off as a multi-player bingo game.",
   "private": true,
   "scripts": {
-    "start": "node ./server.js",
+    "start": "NODE_ENV=production node ./server.js",
     "start:dev": "nodemon ./server.js",
     "stop": "pkill --signal SIGINT BingoApp",
     "build": "run-s clean lint build:js",
