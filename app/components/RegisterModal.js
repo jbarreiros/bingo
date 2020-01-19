@@ -48,7 +48,9 @@ class RegisterModal extends LitElement {
     `;
   }
 
-  onSubmit() {
+  onSubmit(ev) {
+    ev.preventDefault();
+
     const form = this.shadowRoot.querySelector("form");
 
     if (!form.checkValidity()) {
@@ -61,11 +63,11 @@ class RegisterModal extends LitElement {
     store.dispatch("setPlayerName", formData.get("player-name"));
 
     const modal = this.shadowRoot.querySelector("bingo-modal");
-    const event = new CustomEvent("bingo-modal-close", {
+    const closeModalEvent = new CustomEvent("bingo-modal-close", {
       bubbles: true,
       composed: true
     });
-    modal.dispatchEvent(event);
+    modal.dispatchEvent(closeModalEvent);
   }
 }
 
