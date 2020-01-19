@@ -10,11 +10,13 @@ exports.onMessage = function(client, clients, players, ev) {
 
   players.set(userId, data.player);
 
+  // always re-add client in case we are dealing with a reconnected client
+  clients.addClient(userId, client);
+
   switch (data.event) {
     case "register":
-      clients.addClient(userId, client);
       // send this new player the list of all players
-      sendUpdate(client, players);
+      sendUpdate(userId, client, players);
       break;
     default:
       break;
@@ -26,16 +28,21 @@ exports.onMessage = function(client, clients, players, ev) {
 
 /**
  * Sends an "update" event websocket message.
+ * @param {number} userId
  * @param {WebSocket} client
  * @param {Map} players
  */
-function sendUpdate(client, players) {
+function sendUpdate(userId, client, players) {
   const payload = {
     event: "update",
     data: [...players.values()]
   };
 
-  client.send(JSON.stringify(payload));
+  try {
+    client.send(JSON.stringify(payload));
+  } catch (e) {
+    console.log(`Unable to send update to ${userId}`);
+  }
 }
 
 /**
@@ -46,7 +53,7 @@ function sendUpdate(client, players) {
  * @param {Map} players
  */
 function sendUpdateToOtherPlayers(userId, clients, players) {
-  for (let client of clients.getOtherClients(userId)) {
-    sendUpdate(client, players);
+  for (let [id, client] of clients.getOtherClients(userId)) {
+    sendUpdate(id, client, players);
   }
 }

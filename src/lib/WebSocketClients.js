@@ -30,12 +30,12 @@ module.exports = class WebSocketClients {
 
   /**
    * @param {uuid} idToIgnore
-   * @yields {WebSocket}
+   * @yields {[number, WebSocket]}
    */
   *getOtherClients(idToIgnore) {
     for (const [id, client] of this.clients) {
       if (id !== idToIgnore) {
-        yield client;
+        yield [id, client];
       }
     }
   }
