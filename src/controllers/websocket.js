@@ -6,6 +6,12 @@
  */
 exports.onMessage = function(client, clients, players, ev) {
   const data = JSON.parse(ev.data);
+
+  if (data.event === "heartbeat") {
+    // nothing to do, just keeping the connection alive
+    return;
+  }
+
   const userId = data.player.id;
 
   players.set(userId, data.player);

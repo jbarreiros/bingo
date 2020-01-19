@@ -8,6 +8,8 @@ export class Socket {
   constructor(store) {
     this.socket = null;
     this.store = store;
+    this.heartbeatIntervalMiliseconds = 2000;
+    this.heartbeatIntervalId = null;
   }
 
   /**
@@ -31,11 +33,11 @@ export class Socket {
 
       this.socket.addEventListener("open", () => {
         console.log("websocket connected, resolve promise");
+        this.startHeartbeat();
         resolve();
       });
 
       this.socket.addEventListener("close", this.onClose.bind(this));
-      this.socket.addEventListener("pong", this.onPong.bind(this));
       this.socket.addEventListener("message", this.onMessage.bind(this));
 
       console.log("done setting up websocket event handlers");
@@ -48,10 +50,6 @@ export class Socket {
    */
   onClose(code, reason) {
     console.log("closed", code, reason);
-  }
-
-  onPong(data) {
-    console.log("received pong", data);
   }
 
   /**
@@ -88,6 +86,15 @@ export class Socket {
    */
   canSendMessage() {
     return this.socket && this.socket.readyState === WebSocket.OPEN;
+  }
+
+  startHeartbeat() {
+    window.clearInterval(this.heartbeatIntervalId);
+
+    this.heartbeatIntervalId = window.setInterval(
+      this.send.bind(this, "heartbeat", {}),
+      this.heartbeatIntervalMiliseconds
+    );
   }
 
   /**
