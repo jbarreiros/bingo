@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 app.use("/", require("./src/routes/app"));
 
 if (!IS_PROD) {
-    app.use("/", express.static(path.join(__dirname, "/public")));
+  app.use("/", express.static(path.join(__dirname, "/public")));
 }
 
 // websocket

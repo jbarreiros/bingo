@@ -2,21 +2,6 @@
  * @param {WebSocket} client
  * @param {WebSocketClients} clients
  * @param {Map} players
- */
-exports.onClose = function(client, clients, players) {
-  const userId = clients.getClientId(client);
-
-  clients.removeClient(client);
-  players.delete(userId);
-
-  // send updated players list to all players
-  sendUpdateToOtherPlayers(userId, clients, players);
-};
-
-/**
- * @param {WebSocket} client
- * @param {WebSocketClients} clients
- * @param {Map} players
  * @param {Event} ev
  */
 exports.onMessage = function(client, clients, players, ev) {

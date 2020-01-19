@@ -13,7 +13,6 @@ const clients = new WebSocketClients();
 const players = new Map();
 
 router.ws("/", client => {
-  client.onclose = controller.onClose.bind(null, client, clients, players);
   client.onmessage = controller.onMessage.bind(null, client, clients, players);
 });
 
