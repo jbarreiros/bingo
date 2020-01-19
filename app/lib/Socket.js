@@ -27,20 +27,16 @@ export class Socket {
    */
   connect() {
     return new Promise((resolve, reject) => {
-      console.log("connecting websocket");
-
       this.socket = new WebSocket(this.url);
 
       this.socket.addEventListener("open", () => {
-        console.log("websocket connected, resolve promise");
+        console.info("Websocket connected");
         this.startHeartbeat();
         resolve();
       });
 
       this.socket.addEventListener("close", this.onClose.bind(this));
       this.socket.addEventListener("message", this.onMessage.bind(this));
-
-      console.log("done setting up websocket event handlers");
     });
   }
 
@@ -49,7 +45,7 @@ export class Socket {
    * @param {string} reason
    */
   onClose(code, reason) {
-    console.log("closed", code, reason);
+    console.warn("Websocket closed", code, reason);
   }
 
   /**
@@ -61,14 +57,13 @@ export class Socket {
     const data = JSON.parse(ev.data);
     const event = data.event;
 
-    console.log(`got websocket message (event: ${event})`, data);
+    console.info(`Websocket received "${event}" event`);
 
     switch (event) {
       case "update":
         this.onUpdateEvent(data.data);
         break;
       default:
-        console.log(`unrecognized event: ${event}`);
     }
   }
 
@@ -102,12 +97,11 @@ export class Socket {
    * @param {*} data
    */
   async send(event, data) {
-    console.log(`sending ws message: ${event}`, data);
+    console.info(`Sending websocket "${event}" event`);
 
     if (!this.canSendMessage()) {
-      console.log("websocket not connected");
+      console.warn("Websocket not connected, connecting...");
       await this.connect();
-      console.log("websocket reestablished");
     }
 
     this.socket.send(JSON.stringify({ event, ...data }));
@@ -117,7 +111,6 @@ export class Socket {
    * @param {object} playerData
    */
   sendPlayerRegistration(playerData) {
-    console.log("sending player registration", playerData);
     this.send("register", { player: playerData });
   }
 
@@ -125,7 +118,6 @@ export class Socket {
    * @param {object} playerData
    */
   sendPlayerUpdate(playerData) {
-    console.log("sending player update", playerData);
     this.send("updatePlayer", { player: playerData });
   }
 }

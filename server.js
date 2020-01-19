@@ -26,5 +26,5 @@ if (!IS_PROD) {
 app.use("/", require("./src/routes/websocket"));
 
 app.listen(HTTP_PORT, HTTP_HOSTNAME, () =>
-  console.log(`Listening on ${HTTP_HOSTNAME}:${HTTP_PORT}`)
+  console.info(`Listening on ${HTTP_HOSTNAME}:${HTTP_PORT}`)
 );

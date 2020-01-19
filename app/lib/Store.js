@@ -18,7 +18,7 @@ export class Store {
     this.state = new Proxy(this.state, {
       set: (state, key, value) => {
         state[key] = value;
-        console.warning("Do not mutate state!", key);
+        console.warn("Do not mutate state!", key);
 
         return true;
       }
@@ -63,9 +63,7 @@ export class Store {
    */
   subscribe(callback) {
     if (typeof callback !== "function") {
-      console.error(
-        "You can only subscribe to Store changes with a valid function"
-      );
+      console.error("Subscribing to store changes requires a valid function");
       return;
     }
 

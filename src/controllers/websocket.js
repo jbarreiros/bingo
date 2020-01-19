@@ -14,6 +14,7 @@ exports.onMessage = function(client, clients, players, ev) {
 
   const userId = data.player.id;
 
+  // cache player's state
   players.set(userId, data.player);
 
   // always re-add client in case we are dealing with a reconnected client
@@ -47,7 +48,7 @@ function sendUpdate(userId, client, players) {
   try {
     client.send(JSON.stringify(payload));
   } catch (e) {
-    console.log(`Unable to send update to ${userId}`);
+    console.error(`Unable to send websocket "update" event for ${userId}`);
   }
 }
 
