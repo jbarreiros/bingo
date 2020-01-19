@@ -1,3 +1,7 @@
+/**
+ * @param {http.ServerRequest} res
+ * @param {http.ServerResponse} res
+ */
 exports.index = function(req, res) {
   if (res.gameConfig.allowPlayers) {
     const { tiles, freeTile } = res.gameConfig;
@@ -8,13 +12,16 @@ exports.index = function(req, res) {
   }
 };
 
+/**
+ * @param {http.ServerRequest} res
+ * @param {http.ServerResponse} res
+ */
 exports.listTiles = function(req, res) {
   const { tiles } = res.gameConfig;
   renderPage(res, "tiles", { tiles });
 };
 
 /**
- *
  * @param {http.ServerResponse} res
  * @param {string} pageName
  * @param {object} data

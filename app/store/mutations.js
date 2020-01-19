@@ -1,4 +1,8 @@
 export default {
+  /**
+   * @param {object} state
+   * @param {string} newPage
+   */
   setCurrentPage(state, newPage) {
     return {
       ...state,
@@ -9,6 +13,10 @@ export default {
     };
   },
 
+  /**
+   * @param {object} state
+   * @param {number} tileIndex
+   */
   pushTileToSelectedList(state, tileIndex) {
     return {
       ...state,
@@ -19,6 +27,10 @@ export default {
     };
   },
 
+  /**
+   * @param {object} state
+   * @param {number} tileIndex
+   */
   popTileFromSelectedList(state, tileIndex) {
     return {
       ...state,
@@ -31,6 +43,10 @@ export default {
     };
   },
 
+  /**
+   * @param {object} state
+   * @param {Array<object>} players
+   */
   updatePlayers(state, players) {
     return {
       ...state,
@@ -38,6 +54,10 @@ export default {
     };
   },
 
+  /**
+   * @param {object} state
+   * @param {string} playerName
+   */
   setPlayerName(state, playerName) {
     return {
       ...state,
@@ -48,6 +68,10 @@ export default {
     };
   },
 
+  /**
+   * @param {object} state
+   * @param {Array<string>} tiles
+   */
   setPlayerTiles(state, tiles) {
     return {
       ...state,

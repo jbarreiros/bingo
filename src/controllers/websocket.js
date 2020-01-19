@@ -10,10 +10,14 @@ exports.onMessage = function(client, clients, players, ev) {
 
   players.set(userId, data.player);
 
-  if (data.event === "register") {
-    clients.addClient(userId, client);
-    // send this new player the list of all players
-    sendUpdate(client, players);
+  switch (data.event) {
+    case "register":
+      clients.addClient(userId, client);
+      // send this new player the list of all players
+      sendUpdate(client, players);
+      break;
+    default:
+      break;
   }
 
   // send updated players list to all players
