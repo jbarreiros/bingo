@@ -1,3 +1,5 @@
+import { Socket } from "../lib/Socket";
+
 let socket = null;
 
 export default {
@@ -21,37 +23,20 @@ export default {
     store.commit("setPlayerTiles", tiles);
   },
 
-  // https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
-  openWebsocket(store, payload) {
-    const protocol =
-      window.location.protocol.toLowerCase() === "https:" ? "wss" : "ws";
-    socket = new WebSocket(`${protocol}://${location.host}`);
-
-    socket.onopen = () => {
-      socket.send(
-        JSON.stringify({
-          event: "register",
-          player: payload
-        })
-      );
-    };
-
-    socket.onmessage = ev => {
-      const data = JSON.parse(ev.data);
-      const players = data.data;
-
-      if (players.length) {
-        store.commit("updatePlayers", players);
-      }
-    };
+  /**
+   * @param {Store} store
+   * @param {object} playerData
+   */
+  openWebsocket(store, playerData) {
+    socket = new Socket(store);
+    socket.sendPlayerRegistration(playerData);
   },
 
-  updatePlayer(store, payload) {
-    socket.send(
-      JSON.stringify({
-        event: "updatePlayer",
-        player: payload
-      })
-    );
+  /**
+   * @param {Store} store
+   * @param {object} playerData
+   */
+  updatePlayer(store, playerData) {
+    socket.sendPlayerUpdate(playerData);
   }
 };
