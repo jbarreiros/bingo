@@ -25,4 +25,64 @@ npm run dev
 
 // "production" build
 npm run build
+
+// start production environment
+npm start
+```
+
+## Nginx Example
+
+_Using Nginx as a reverse proxy for the Express server._
+
+```nginx
+server {
+  server_name <hostname>;
+
+  gzip_vary on;
+  gzip_proxied any;
+  gzip_comp_level 6;
+  gzip_buffers 16 8k;
+  gzip_http_version 1.1;
+  gzip_min_length 256;
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript application/vnd.ms-fontobject application/x-font-ttf font/opentype image/svg+xml image/x-icon;
+
+  location ~ \.(js|css|ico)$ {
+    root /var/www/<hostname>/public;
+    access_log on;
+    error_log on;
+    expires 5m;
+  }
+
+  location / {
+    root /var/www/<hostname>;
+
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';";
+
+    proxy_pass http://localhost:8080;
+
+    # websocket
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+
+  listen [::]:443 ssl;
+  listen 443 ssl;
+  # use LetsEncrypt Certbot to manage SSL
+}
+
+server {
+  if ($host = <hostname>) {
+    return 301 https://$host$request_uri;
+  }
+
+  listen 80;
+  listen [::]:80;
+
+  server_name <hostname>;
+
+  return 404;
+}
 ```
