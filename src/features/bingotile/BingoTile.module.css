@@ -1,0 +1,25 @@
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #c8c9c8;
+    text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 0.7rem;   
+    
+    background-color: #f0f1ec;
+    color: #252422;    
+}
+
+.tile--selected {
+  background-color: #2f3f52;
+  color: #c35947;  
+}
+
+@media only screen and (min-width: env(--breakpoint)) {
+    .tile {
+      font-size: 1rem;
+    }
+  }

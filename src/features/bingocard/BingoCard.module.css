@@ -1,0 +1,20 @@
+.bingoCard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto repeat(5, 1fr);
+    justify-content: center;
+  }
+
+  @media only screen and (min-width: env(--breakpoint)) {
+    .bingoCard {
+      grid-template-columns: repeat(5, 150px);
+      grid-template-rows: auto repeat(5, 150px);
+    }
+  }
+
+  .letter {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 900;
+  }
