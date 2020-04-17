@@ -13,7 +13,7 @@
     color: #252422;    
 }
 
-.tile--selected {
+.tileSelected {
   background-color: #2f3f52;
   color: #c35947;  
 }

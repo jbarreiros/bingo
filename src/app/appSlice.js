@@ -42,18 +42,23 @@ export const slice = createSlice({
             id: uuid(),
             name: '',
             tiles: randomizedTiles,
-            selectedTitles: []
+            selectedTiles: []
         },
         players: [
             // { same as "current" object }
         ]
     },
     reducers: {
-
+        tileSelected: (state, action) => {
+            state.current.selectedTiles.push(action.payload);
+        },
+        tileUnselected: (state, action) => {
+            state.current.selectedTiles = state.current.selectedTiles.filter(tile => tile !== action.payload);
+        }
     }
 });
 
-// export const { ..reducer methods } = slice.actions;
+export const { tileSelected, tileUnselected } = slice.actions;
 
 // example selector (getter)
 export const selectAppName = state => state.app.app.name;

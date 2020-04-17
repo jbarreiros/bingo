@@ -12,9 +12,9 @@ function BingoLetters() {
 
 export function BingoCard() {
     const tiles = useSelector(selectTiles);
-
-    const tileItems = tiles.map((tile) => 
-        <BingoTile key={tile.toString()} label={tile}/>
+    console.log(tiles);
+    const tileItems = tiles.map((tile, index) => 
+        <BingoTile key={tile.toString()} tileIndex={index} label={tile}/>
     );
 
     return (
