@@ -36,7 +36,7 @@ export const slice = createSlice({
     initialState: {
         app: {
             name: 'Paradigm Shifting Synergical Cloud Bingo',
-            page: 'card'
+            page: 'card' // card, opponents
         },
         current: {
             id: uuid(),
@@ -54,14 +54,19 @@ export const slice = createSlice({
         },
         tileUnselected: (state, action) => {
             state.current.selectedTiles = state.current.selectedTiles.filter(tile => tile !== action.payload);
+        },
+        changePage: (state, action) => {
+            state.app.page = action.payload;
         }
     }
 });
 
-export const { tileSelected, tileUnselected } = slice.actions;
+export const { tileSelected, tileUnselected, changePage } = slice.actions;
 
 // example selector (getter)
 export const selectAppName = state => state.app.app.name;
-export const selectTiles = state => state.app.current.tiles;
+export const selectCurrentTiles = state => state.app.current.tiles;
+export const selectActivePage = state => state.app.app.page;
+export const selectNumPlayers = state => state.app.players.length;
 
 export default slice.reducer;
