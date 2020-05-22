@@ -1,0 +1,12 @@
+.opponents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media only screen and (min-width: env(--breakpoint)) {
+  .opponents {
+    margin: 0 auto;
+    width: env(--breakpoint);
+  }
+}

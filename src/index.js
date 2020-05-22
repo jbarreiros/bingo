@@ -8,7 +8,8 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    {/*<App playerTiles={window.pageData.tiles} />*/}
+    <App/>
   </Provider>,
   document.getElementById('root')
 );

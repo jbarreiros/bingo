@@ -1,0 +1,32 @@
+.miniBingoCard {
+  display: block;
+  margin: 10px;
+  width: 100px;
+}
+
+.bingoCard {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: auto repeat(5, 20%);
+  justify-content: center;
+}
+
+.bingoTile {
+  border: 1px solid #c8c9c8;
+  height: 20px;
+  background-color: #f0f1ec;
+}
+
+.bingoTile.bingoTileSelected {
+  background-color: #2f3f52;
+}
+
+.bingoPlayer {
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding-top: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

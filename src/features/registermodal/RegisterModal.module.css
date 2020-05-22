@@ -1,0 +1,10 @@
+.label {
+  font-weight: bold;
+}
+
+.input {
+  box-sizing: border-box;
+  display: block;
+  font-size: 1rem;
+  width: 100%;
+}
