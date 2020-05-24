@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPlayerName } from '../../app/appSlice';
 import { Modal } from '../modal/Modal';
@@ -8,8 +8,16 @@ export function RegisterModal(props) {
   const dispatch = useDispatch();
   const [playerName, setPlayerName] = useState('');
   const [showModal, setShowModal] = useState(true);
+  const formRef = useRef(null);
 
   function handleSubmit(ev) {
+    const form = formRef.current;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     dispatch(setCurrentPlayerName(playerName));
     setShowModal(false);
   }
@@ -21,10 +29,11 @@ export function RegisterModal(props) {
       showModal={showModal}
       onSubmit={handleSubmit}
     >
-      <RegisterForm
-        setPlayerName={e => setPlayerName(e)}
-        onSubmit={handleSubmit}
-      />
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <RegisterForm
+          setPlayerName={e => setPlayerName(e)}
+        />
+      </form>
     </Modal>
   );
 }

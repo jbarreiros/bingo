@@ -3,7 +3,7 @@ import styles from './RegisterModal.module.css';
 
 export function RegisterForm(props) {
   return (
-    <form onSubmit={props.onSubmit}>
+    <div>
       <label id="player-name" className={styles.label}>Your Name:</label>
       <input
         type="text"
@@ -14,6 +14,6 @@ export function RegisterForm(props) {
         autoFocus
         onChange={e => props.setPlayerName(e.target.value)}
       />
-    </form>
+    </div>
   );
 }
