@@ -4,7 +4,7 @@
 
 const path = require("path");
 const express = require("express");
-const es6Renderer = require('express-es6-template-engine')
+const es6Renderer = require("express-es6-template-engine");
 const app = express();
 require("express-ws")(app);
 

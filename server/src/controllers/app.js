@@ -2,7 +2,7 @@
  * @param {http.ServerRequest} res
  * @param {http.ServerResponse} res
  */
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   if (res.gameConfig.allowPlayers) {
     const { tiles, freeTile } = res.gameConfig;
     const playerTiles = generatePlayerTiles(tiles, freeTile);
@@ -16,7 +16,7 @@ exports.index = function(req, res) {
  * @param {http.ServerRequest} res
  * @param {http.ServerResponse} res
  */
-exports.listTiles = function(req, res) {
+exports.listTiles = function (req, res) {
   const { tiles } = res.gameConfig;
   renderPage(res, "tiles", { tiles });
 };
@@ -35,7 +35,7 @@ function renderPage(res, viewName, data = {}) {
     res.render(viewName, { locals });
   } else {
     // simple non-javascripty pages
-    res.render("layout", { locals, partials: { body: viewName }});
+    res.render("layout", { locals, partials: { body: viewName } });
   }
 }
 
