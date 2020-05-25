@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAppName, setPlayerTiles } from './app/appSlice';
+import { selectAppName, setCurrentPlayerTiles } from './app/appSlice';
 // import { Counter } from './features/counter/Counter';
 import { BingoCard } from './features/bingocard/BingoCard';
 import { TabContainer } from './features/tabcontainer/TabContainer';
@@ -16,7 +16,7 @@ function App(props) {
   const dispatch = useDispatch();
   const appName = useSelector(selectAppName);
 
-  // dispatch(setPlayerTiles(props.playerTiles));
+  dispatch(setCurrentPlayerTiles(props.playerTiles));
 
   return (
     <div className="App">

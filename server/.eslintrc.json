@@ -1,0 +1,21 @@
+{
+    "env": {
+        "es2017": true,
+        "node": true
+    },
+    "extends": [
+      "prettier",
+      "eslint:recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "globals": {
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    }
+}

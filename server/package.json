@@ -1,0 +1,36 @@
+{
+  "name": "bingo-server",
+  "version": "0.1.0",
+  "description": "A silly pile of code trying to pass itself off as a multi-player bingo game.",
+  "private": true,
+  "author": "John Barreiros <johnbarreiros2@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "start": "NODE_ENV=production node ./server.js",
+    "start:dev": "nodemon ./server.js",
+    "build": "echo \"Nothing to build\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-es6-template-engine": "^2.2.2",
+    "express-ws": "^4.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "nodemonConfig": {
+    "watch": [
+      "src/",
+      "server.js"
+    ]
+  }
+}
