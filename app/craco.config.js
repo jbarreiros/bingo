@@ -8,9 +8,9 @@ module.exports = {
                     // Consider an "@media()" rule. In that context, "var(--my-var)" does
                     // not work. The "env(--my-bar)" syntax is being proposed as an alternative.
                     "postcss-env-function": {
-                        importFrom: "./src/environment.js"
+                        importFrom: "./src/postcss-environment-variables.js"
                     }
-                }         
+                }
             }
         }
     }
