@@ -22,9 +22,6 @@ export function BingoTile(props) {
     } else {
       dispatch(tileUnselected(props.tileIndex));
     }
-
-    // TODO announce that player has been updated
-    // store.dispatch("updatePlayer", store.state.current);
   }
 
   return (

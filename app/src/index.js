@@ -6,9 +6,11 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+const mockTiles = Array.from(Array(25).keys())
+
 ReactDOM.render(
   <Provider store={store}>
-    <App playerTiles={window.pageData.tiles} />
+    <App playerTiles={window.pageData ? window.pageData.tiles : mockTiles} />
   </Provider>,
   document.getElementById('root')
 );

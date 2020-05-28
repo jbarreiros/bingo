@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import uuid from "uuid-random";
+import socket from "./socket";
 
 export const slice = createSlice({
-    name: 'app',
-    initialState: {
+  name: 'app',
+  initialState: {
         app: {
             name: 'Paradigm Shifting Synergical Cloud Bingo',
             page: 'card' // card, opponents
@@ -23,34 +24,71 @@ export const slice = createSlice({
             //   selectedTiles: [4,5,6]
             // }
         ]
+  },
+  reducers: {
+    setCurrentPlayerTiles: (state, action) => {
+      state.current.tiles = action.payload;
     },
-    reducers: {
-        setCurrentPlayerTiles: (state, action) => {
-          state.current.tiles = action.payload;
-        },
-        setCurrentPlayerName: (state, action) => {
-          state.current.name = action.payload;
-        },
-        tileSelected: (state, action) => {
-            state.current.selectedTiles.push(action.payload);
-        },
-        tileUnselected: (state, action) => {
-            state.current.selectedTiles = state.current.selectedTiles.filter(tile => tile !== action.payload);
-        },
-        changePage: (state, action) => {
-            state.app.page = action.payload;
-        }
+    setCurrentPlayerName: (state, action) => {
+      state.current.name = action.payload;
+    },
+    addTile: (state, action) => {
+      state.current.selectedTiles.push(action.payload);
+    },
+    removeTile: (state, action) => {
+      state.current.selectedTiles = state.current.selectedTiles.filter(tile => tile !== action.payload);
+    },
+    changePage: (state, action) => {
+      state.app.page = action.payload;
+    },
+    updatePlayers: (state, action) => {
+      state.players = action.payload;
     }
+  }
 });
 
-export const { setCurrentPlayerTiles, setCurrentPlayerName, tileSelected, tileUnselected, changePage } = slice.actions;
+//
+// actions
 
-// example selector (getter)
+export const { setCurrentPlayerTiles, changePage, updatePlayers } = slice.actions;
+
+//
+// thunks
+
+export const registerPlayer = (playerName) => async (dispatch, getState) => {
+  dispatch(slice.actions.setCurrentPlayerName(playerName));
+  try {
+    socket.sendPlayerRegistration(getState().app.current);
+  } catch (e) {
+    // TODO something
+  }
+};
+
+export const tileSelected = (tileId) => async (dispatch, getState) => {
+  dispatch(slice.actions.addTile(tileId));
+  try {
+    socket.sendPlayerUpdate(getState().app.current);
+  } catch (e) {
+    // TODO something
+  }
+};
+
+export const tileUnselected = (tileId) => async (dispatch, getState) => {
+  dispatch(slice.actions.removeTile(tileId));
+  try {
+    socket.sendPlayerUpdate(getState().app.current);
+  } catch (e) {
+    // TODO something
+  }
+};
+
+//
+// selectors
+
 export const selectAppName = state => state.app.app.name;
-export const selectCurrentTiles = state => state.app.current.tiles;
 export const selectActivePage = state => state.app.app.page;
-export const selectNumPlayers = state => state.app.players.length;
-export const selectPlayerName = state => state.app.current.name;
+export const selectCurrentPlayer = state => state.app.current;
 export const selectPlayerList = state => state.app.players;
+export const selectNumPlayers = state => state.app.players.length;
 
 export default slice.reducer;

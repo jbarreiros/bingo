@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectPlayerList } from '../../app/appSlice';
+import { selectCurrentPlayer, selectPlayerList } from '../../app/appSlice';
 import styles from './Opponents.module.css';
 import { MiniBingoCard } from '../minibingocard/MiniBingoCard';
 
@@ -16,10 +16,12 @@ function PlayerList(props) {
 
 export function Opponents(props) {
   const players = useSelector(selectPlayerList);
+  const currentPlayer = useSelector(selectCurrentPlayer);
+  const opponents = players.filter(player => player.id !== currentPlayer.id);
 
   return (
     <div className={styles.opponents}>
-      {players.length > 0 ? <PlayerList players={players}/> : <NoPlayers/>}
+      {opponents.length > 0 ? <PlayerList players={opponents}/> : <NoPlayers/>}
     </div>
   );
 }

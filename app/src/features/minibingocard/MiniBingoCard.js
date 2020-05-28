@@ -19,10 +19,6 @@ function Tiles(props) {
 export function MiniBingoCard(props) {
   // props.player
 
-  // if (!props.player) {
-  //   return null;
-  // }
-
   return (
     <div className={styles.miniBingoCard}>
       <div className={styles.bingoCard}>

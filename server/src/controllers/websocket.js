@@ -4,7 +4,7 @@
  * @param {Map} players
  * @param {Event} ev
  */
-exports.onMessage = function(client, clients, players, ev) {
+exports.onMessage = function (client, clients, players, ev) {
   const data = JSON.parse(ev.data);
 
   if (data.event === "heartbeat") {
@@ -42,7 +42,7 @@ exports.onMessage = function(client, clients, players, ev) {
 function sendUpdate(userId, client, players) {
   const payload = {
     event: "update",
-    data: [...players.values()]
+    data: [...players.values()],
   };
 
   try {

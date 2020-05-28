@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPlayerName } from '../../app/appSlice';
+import { registerPlayer } from '../../app/appSlice';
 import { Modal } from '../modal/Modal';
 import { RegisterForm } from './RegisterForm';
 
@@ -18,7 +18,7 @@ export function RegisterModal(props) {
       return;
     }
 
-    dispatch(setCurrentPlayerName(playerName));
+    dispatch(registerPlayer(playerName));
     setShowModal(false);
   }
 

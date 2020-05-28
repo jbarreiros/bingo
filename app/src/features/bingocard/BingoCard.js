@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectCurrentTiles } from '../../app/appSlice';
+import { selectCurrentPlayer } from '../../app/appSlice';
 import { BingoTile } from '../bingotile/BingoTile';
 import styles from './BingoCard.module.css';
 
@@ -11,7 +11,7 @@ function BingoLetters() {
 }
 
 export function BingoCard() {
-  const tiles = useSelector(selectCurrentTiles);
+  const { tiles } = useSelector(selectCurrentPlayer);
   const tileItems = tiles.map((tile, index) =>
       <BingoTile key={tile.toString()} tileIndex={index} label={tile}/>
   );

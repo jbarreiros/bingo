@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAppName, setCurrentPlayerTiles } from './app/appSlice';
-// import { Counter } from './features/counter/Counter';
+import { selectAppName, setCurrentPlayerTiles, updatePlayers } from './app/appSlice';
 import { BingoCard } from './features/bingocard/BingoCard';
 import { TabContainer } from './features/tabcontainer/TabContainer';
 import { Tabs } from './features/tabs/Tabs';
@@ -10,20 +9,20 @@ import { OpponentsBadge } from './features/opponentsbadge/OpponentsBadge';
 import { CurrentPlayer } from './features/currentplayer/CurrentPlayer';
 import { Opponents } from './features/opponents/Opponents';
 import { RegisterModal } from './features/registermodal/RegisterModal';
+import socket from "./app/socket";
 import './App.css';
 
 function App(props) {
   const dispatch = useDispatch();
   const appName = useSelector(selectAppName);
 
+  // register event for incoming websocket messages
+  socket.registerEvent((eventName, data) => eventName === "update" && dispatch(updatePlayers(data.players)));
+
   dispatch(setCurrentPlayerTiles(props.playerTiles));
 
   return (
-    <div className="App">
-      {/*<header className="App-header">
-        <Counter />
-      </header>*/}
-
+    <React.Fragment>
       <div className="page-wrapper">
         <header className="page-header">
           <Tabs>
@@ -50,7 +49,7 @@ function App(props) {
       </div>
 
       <RegisterModal/>
-    </div>
+    </React.Fragment>
   );
 }
 
