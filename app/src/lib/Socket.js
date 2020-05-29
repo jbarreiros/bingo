@@ -17,7 +17,7 @@ export class Socket {
       window.location.protocol.toLowerCase() === "https:" ? "wss" : "ws";
 
     let port = window.location.port;
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
       // FIXME, how not to hardcode this
       // package.json "proxy" property does not work here
       port = 8080;
@@ -79,7 +79,7 @@ export class Socket {
    * @param {Array<object>} players
    */
   onUpdateEvent(players) {
-    this.onEventCallbacks.forEach(fn => fn("update", { players }));
+    this.onEventCallbacks.forEach((fn) => fn("update", { players }));
   }
 
   /**
