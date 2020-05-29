@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAppName, setCurrentPlayerTiles, updatePlayers } from './app/appSlice';
-import { BingoCard } from './features/bingocard/BingoCard';
-import { TabContainer } from './features/tabcontainer/TabContainer';
-import { Tabs } from './features/tabs/Tabs';
-import { TabItem } from './features/tabs/TabItem';
-import { OpponentsBadge } from './features/opponentsbadge/OpponentsBadge';
-import { CurrentPlayer } from './features/currentplayer/CurrentPlayer';
-import { Opponents } from './features/opponents/Opponents';
-import { RegisterModal } from './features/registermodal/RegisterModal';
+import { BingoCard } from './components/bingocard/BingoCard';
+import { TabContainer } from './components/tabcontainer/TabContainer';
+import { Tabs } from './components/tabs/Tabs';
+import { TabItem } from './components/tabs/TabItem';
+import { OpponentsBadge } from './components/opponentsbadge/OpponentsBadge';
+import { CurrentPlayer } from './components/currentplayer/CurrentPlayer';
+import { Opponents } from './components/opponents/Opponents';
+import { RegisterModal } from './components/registermodal/RegisterModal';
 import socket from "./app/socket";
 import './App.css';
 
