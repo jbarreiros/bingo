@@ -31,6 +31,12 @@ function App(props) {
   return (
     <React.Fragment>
       <div className="page-wrapper">
+        <BingoCard className="bingo-card" />
+
+        <CurrentPlayer className="current-player" />
+        <Opponents className="opponents" />
+
+        {/*
         <header className="page-header">
           <Tabs>
             <TabItem name="card" label="My Card" />
@@ -38,26 +44,19 @@ function App(props) {
               <OpponentsBadge />
             </TabItem>
           </Tabs>
-          <CurrentPlayer />
         </header>
 
-        <TabContainer name="card">
-          <BingoCard />
-        </TabContainer>
-
-        <TabContainer name="opponents">
-          <Opponents />
-        </TabContainer>
+        <TabContainer name="card"></TabContainer>
+        <TabContainer name="opponents"></TabContainer>
+        */}
 
         <footer className="page-footer">
           <p>&#10803;</p>
           <p>
-            {appName} is fictional and does not depict anything real or
-            imagined.
+            {appName} is fictional and does not depict anything real or imagined.
           </p>
         </footer>
       </div>
-
       <RegisterModal />
     </React.Fragment>
   );

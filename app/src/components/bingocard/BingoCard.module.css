@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto repeat(5, 1fr);
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 @media only screen and (min-width: env(--breakpoint)) {

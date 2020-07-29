@@ -8,7 +8,7 @@ const es6Renderer = require("express-es6-template-engine");
 const app = express();
 require("express-ws")(app);
 
-const HTTP_HOSTNAME = process.env.HOST || "localhost";
+const HTTP_HOSTNAME = process.env.HOST || "0.0.0.0";
 const HTTP_PORT = process.env.PORT || 8080;
 const IS_PROD = process.env.NODE_ENV === "production";
 

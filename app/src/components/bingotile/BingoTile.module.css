@@ -4,6 +4,7 @@
   justify-content: center;
   text-align: center;
   border: 1px solid #c8c9c8;
+  border-radius: 0.6rem;
   text-transform: uppercase;
   overflow: hidden;
   cursor: pointer;
@@ -11,11 +12,21 @@
 
   background-color: #f0f1ec;
   color: #252422;
+
+  position: relative;
 }
 
-.tileSelected {
-  background-color: #2f3f52;
-  color: #c35947;
+.tileSelected::before {
+  content: "";
+  background-color: #c35947;
+  border-radius: 6rem;
+  box-shadow: inset 0 0 0.5rem 0.1rem #c3280d;
+  opacity: 0.8;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.2rem;
+  left: 0.2rem;
 }
 
 @media only screen and (min-width: env(--breakpoint)) {

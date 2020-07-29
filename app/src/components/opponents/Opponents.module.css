@@ -2,11 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
 }
 
 @media only screen and (min-width: env(--breakpoint)) {
   .opponents {
     margin: 0 auto;
-    width: env(--breakpoint);
+    /* width: env(--breakpoint); */
   }
 }
