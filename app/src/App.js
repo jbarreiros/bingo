@@ -5,11 +5,12 @@ import {
   setCurrentPlayerTiles,
   updatePlayers,
 } from "./app/appSlice";
+import { BingoCardHeader } from "./components/bingocard/BingoCardHeader";
 import { BingoCard } from "./components/bingocard/BingoCard";
-import { TabContainer } from "./components/tabcontainer/TabContainer";
-import { Tabs } from "./components/tabs/Tabs";
-import { TabItem } from "./components/tabs/TabItem";
-import { OpponentsBadge } from "./components/opponentsbadge/OpponentsBadge";
+// import { TabContainer } from "./components/tabcontainer/TabContainer";
+// import { Tabs } from "./components/tabs/Tabs";
+// import { TabItem } from "./components/tabs/TabItem";
+// import { OpponentsBadge } from "./components/opponentsbadge/OpponentsBadge";
 import { CurrentPlayer } from "./components/currentplayer/CurrentPlayer";
 import { Opponents } from "./components/opponents/Opponents";
 import { RegisterModal } from "./components/registermodal/RegisterModal";
@@ -31,6 +32,7 @@ function App(props) {
   return (
     <React.Fragment>
       <div className="page-wrapper">
+        <BingoCardHeader className="bingo-card-header" />
         <BingoCard className="bingo-card" />
 
         <CurrentPlayer className="current-player" />

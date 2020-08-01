@@ -1,14 +1,23 @@
 .bingoCard {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   /* justify-content: center; */
+}
+
+.bingoCardHeader {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 @media only screen and (min-width: env(--breakpoint)) {
   .bingoCard {
     grid-template-columns: repeat(5, 150px);
-    grid-template-rows: auto repeat(5, 150px);
+    grid-template-rows: repeat(5, 150px);
+  }
+
+  .bingoCardHeader {
+    grid-template-columns: repeat(5, 150px);
   }
 }
 

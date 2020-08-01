@@ -6,7 +6,7 @@ import styles from "./Opponents.module.css";
 import { MiniBingoCard } from "../minibingocard/MiniBingoCard";
 
 function NoPlayers() {
-  return <p>No one has joined yet!</p>;
+  return <p className={styles.noPlayers}>No one has joined yet!</p>;
 }
 
 function PlayerList(props) {

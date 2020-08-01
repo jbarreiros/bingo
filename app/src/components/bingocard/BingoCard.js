@@ -5,14 +5,6 @@ import { selectCurrentPlayer } from "../../app/appSlice";
 import { BingoTile } from "../bingotile/BingoTile";
 import styles from "./BingoCard.module.css";
 
-function BingoLetters() {
-  return [..."bingo"].map((letter) => (
-    <div key={letter} className={styles.letter}>
-      {letter}
-    </div>
-  ));
-}
-
 export function BingoCard(props) {
   const { tiles } = useSelector(selectCurrentPlayer);
   const tileItems = tiles.map((tile, index) => (
@@ -21,7 +13,6 @@ export function BingoCard(props) {
 
   return (
     <div className={classnames(props.className, styles.bingoCard)}>
-      <BingoLetters />
       {tileItems}
     </div>
   );

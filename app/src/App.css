@@ -23,19 +23,23 @@
 .page-wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
   grid-template-areas:
-    "card header"
-    "card opponents"
+    "cardheader header"
+    "cardbody opponents"
     "footer footer";
 }
 
+.bingo-card-header {
+  grid-area: cardheader;
+}
+
 .bingo-card {
-  grid-area: card;
+  grid-area: cardbody;
 }
 
 .current-player {
   grid-area: header;
+  align-self: center;
 }
 
 .opponents {
