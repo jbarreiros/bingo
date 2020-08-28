@@ -8,10 +8,10 @@ export function CurrentPlayer(props) {
   const { name } = useSelector(selectCurrentPlayer);
   return (
     <div className={classnames(props.className, styles.currentPlayer)}>
+      {`${name} `}
       <span role="img" aria-label="">
         &#128100;
-      </span>{" "}
-      {name}
+      </span>
     </div>
   );
 }

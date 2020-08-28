@@ -40,6 +40,7 @@
 .current-player {
   grid-area: header;
   align-self: center;
+  justify-self: end;
 }
 
 .opponents {

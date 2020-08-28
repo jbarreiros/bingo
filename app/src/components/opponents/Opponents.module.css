@@ -3,14 +3,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  margin: 0 auto;
+  width: calc(120px * 4);
 }
 
 .noPlayers {
-  background-image: url('./happy-friends.jpg');
+  background-image: url('./happy-friends.png');
   background-repeat: no-repeat;
   background-position: center center;
   margin-top: 8rem;
   width: 100%;
   text-align: center;
   height: 319px;
+  font-weight: 500;
 }
