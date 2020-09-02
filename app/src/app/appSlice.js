@@ -70,6 +70,15 @@ export const registerPlayer = (playerName) => async (dispatch, getState) => {
   }
 };
 
+export const changePlayerName = (playerName) => async (dispatch, getState) => {
+  dispatch(slice.actions.setCurrentPlayerName(playerName));
+  try {
+    socket.sendPlayerUpdate(getState().app.current);
+  } catch (e) {
+    // TODO something
+  }
+};
+
 export const tileSelected = (tileId) => async (dispatch, getState) => {
   dispatch(slice.actions.addTile(tileId));
   try {

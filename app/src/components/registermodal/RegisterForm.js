@@ -12,6 +12,8 @@ export function RegisterForm(props) {
         name="player-name"
         id="player-name"
         className={styles.input}
+        minLength="3"
+        maxLength="20"
         required
         autoFocus
         onChange={(e) => props.setPlayerName(e.target.value)}

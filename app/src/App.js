@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectAppName,
+  selectCurrentPlayer,
   setCurrentPlayerTiles,
   updatePlayers,
 } from "./app/appSlice";
@@ -20,6 +21,7 @@ import "./App.css";
 function App(props) {
   const dispatch = useDispatch();
   const appName = useSelector(selectAppName);
+  const { name: playerName } = useSelector(selectCurrentPlayer);
 
   // register event for incoming websocket messages
   socket.registerEvent(
@@ -35,7 +37,7 @@ function App(props) {
         <BingoCardHeader className="bingo-card-header" />
         <BingoCard className="bingo-card" />
 
-        <CurrentPlayer className="current-player" />
+        <CurrentPlayer className="current-player" name={playerName} />
         <Opponents className="opponents" />
 
         {/*

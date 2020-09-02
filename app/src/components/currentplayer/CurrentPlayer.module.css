@@ -4,6 +4,15 @@
   border-radius: 1rem;
 }
 
+.playerName:hover,
+.playerName:focus {
+  outline: 1px solid black;
+}
+
+.icon {
+  margin-left: 0.4rem;
+}
+
 /* @media only screen and (min-width: env(--breakpoint)) {
   .currentPlayer {
     /* max-width: 10rem; */
