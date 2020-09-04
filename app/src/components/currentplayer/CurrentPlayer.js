@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { changePlayerName } from "../../app/appSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { changePlayerName, selectCurrentPlayer } from "../../app/appSlice";
 import classnames from "classnames";
 import styles from "./CurrentPlayer.module.css";
 
@@ -16,7 +16,7 @@ function NameLabel(props) {
       onFocus={() => props.setIsEditing(true)}
       tabIndex={0}
     >
-      {props.name}
+      {props.name || 'New phone, who dis?'}
     </span>
   );
 }
@@ -53,13 +53,14 @@ function NameForm(props) {
 
 export function CurrentPlayer(props) {
   const [isEditing, setIsEditing] = useState(false);
+  const { name: playerName } = useSelector(selectCurrentPlayer);
 
   return (
     <div className={classnames(props.className, styles.currentPlayer)}>
       {
         isEditing
-        ? <NameForm name={props.name} setIsEditing={setIsEditing} />
-        : <NameLabel name={props.name} setIsEditing={setIsEditing} />
+        ? <NameForm name={playerName} setIsEditing={setIsEditing} />
+        : <NameLabel name={playerName} setIsEditing={setIsEditing} />
       }
       <span className={styles.icon} role="img" aria-label="">
         &#128100;

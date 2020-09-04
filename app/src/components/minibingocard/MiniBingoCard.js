@@ -18,6 +18,7 @@ function Tiles(props) {
         styles.bingoTile,
         isTileSelected(tileIndex) ? styles.bingoTileSelected : "",
       ].join(" ")}
+      title={tileLabel}
     ></div>
   ));
 }

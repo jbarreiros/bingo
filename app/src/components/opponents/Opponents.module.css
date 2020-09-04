@@ -4,16 +4,26 @@
   justify-content: center;
   align-content: flex-start;
   margin: 0 auto;
-  width: calc(120px * 4);
+  width: 100%;
 }
 
 .noPlayers {
   background-image: url('./happy-friends.png');
   background-repeat: no-repeat;
-  background-position: center center;
-  margin-top: 8rem;
+  background-position: center bottom;
   width: 100%;
   text-align: center;
-  height: 319px;
+  height: 156px; /* image is 126px tall */
   font-weight: 500;
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: env(--breakpoint)) {
+  .opponents {
+    width: calc(120px * 4);
+  }
+
+  .noPlayers {
+    margin-top: revert;
+  }
 }

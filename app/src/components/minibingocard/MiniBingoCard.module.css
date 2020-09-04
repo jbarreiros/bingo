@@ -24,7 +24,6 @@
 .bingoPlayer {
   text-align: center;
   font-size: 0.8rem;
-  text-transform: uppercase;
   padding-top: 0.2rem;
   white-space: nowrap;
   overflow: hidden;

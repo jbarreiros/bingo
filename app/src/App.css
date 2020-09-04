@@ -1,32 +1,11 @@
-/* .page-wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  height: calc(100vh - 2rem);
-  width: auto;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
-@media only screen and (min-width: env(--breakpoint)) {
-  .page-wrapper {
-    width: env(--breakpoint);
-  }
-}
-
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-} */
-
 .page-wrapper {
   display: grid;
-  grid-template-columns: auto 1fr;
   grid-template-areas:
-    "cardheader header"
-    "cardbody opponents"
-    "footer footer";
+    "header"
+    "cardheader"
+    "cardbody"
+    "opponents"
+    "footer";
 }
 
 .bingo-card-header {
@@ -40,7 +19,8 @@
 .current-player {
   grid-area: header;
   align-self: center;
-  justify-self: end;
+  justify-self: center;
+  margin-bottom: 1rem;
 }
 
 .opponents {
@@ -53,4 +33,23 @@
   text-align: center;
   font-style: italic;
   text-align: center;
+}
+
+@media only screen and (min-width: env(--breakpoint)) {
+  .page-wrapper {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "cardheader header"
+      "cardbody opponents"
+      "footer footer";
+  }
+
+  .current-player {
+    justify-self: end;
+    margin-bottom: 0;
+  }
+
+  .opponents {
+    margin-top: 110px;
+  }
 }
