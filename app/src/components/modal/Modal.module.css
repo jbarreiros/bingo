@@ -12,11 +12,9 @@
   box-sizing: border-box;
   position: fixed;
   z-index: 1010;
-
   top: 20%;
   left: 5vw;
   width: 90vw;
-
   background-color: #f0f1ec;
   border-radius: 4px;
   padding: 2rem;
@@ -49,5 +47,5 @@
 
 .submit:hover,
 .submit:focus {
-  background-color: #00ff00;
+  background-color: #0f0;
 }
