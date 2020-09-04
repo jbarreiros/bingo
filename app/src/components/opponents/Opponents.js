@@ -2,8 +2,8 @@ import React from "react";
 import classnames from "classnames";
 import { useSelector } from "react-redux";
 import { selectCurrentPlayer, selectPlayerList } from "../../app/appSlice";
-import styles from "./Opponents.module.css";
 import { MiniBingoCard } from "../minibingocard/MiniBingoCard";
+import styles from "./Opponents.module.css";
 
 function NoPlayers() {
   return <p className={styles.noPlayers}>Bingo is better with friends!</p>;

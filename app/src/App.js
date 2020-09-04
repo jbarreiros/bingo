@@ -7,7 +7,6 @@ import {
 } from "./app/appSlice";
 import { BingoCardHeader } from "./components/bingocard/BingoCardHeader";
 import { BingoCard } from "./components/bingocard/BingoCard";
-import { OpponentsBadge } from "./components/opponentsbadge/OpponentsBadge";
 import { CurrentPlayer } from "./components/currentplayer/CurrentPlayer";
 import { Opponents } from "./components/opponents/Opponents";
 import { RegisterModal } from "./components/registermodal/RegisterModal";
