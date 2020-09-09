@@ -1,0 +1,31 @@
+{
+  "name": "Paradigm Shifting Synergical Cloud Bingo",
+  "allowPlayers": true,
+  "freeTile": "free",
+  "tiles": [
+    "actualize",
+    "aggregate",
+    "benchmark",
+    "cloudify",
+    "conceptualize",
+    "cultivate",
+    "ecosystem",
+    "engage",
+    "envisioneer",
+    "expedite",
+    "generate",
+    "impact",
+    "innovate",
+    "iterate",
+    "maximize",
+    "monetize",
+    "optimize",
+    "promote synergy",
+    "revolutionize",
+    "scale",
+    "strategize",
+    "streamline",
+    "transform",
+    "unleash"
+  ]
+}
