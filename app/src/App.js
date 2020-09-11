@@ -10,6 +10,7 @@ import { BingoCard } from "components/bingocard/BingoCard";
 import { CurrentPlayer } from "components/currentplayer/CurrentPlayer";
 import { Opponents } from "components/opponents/Opponents";
 import { RegisterModal } from "components/registermodal/RegisterModal";
+import { Footer } from "components/footer/Footer";
 import socket from "app/socket";
 import "./App.css";
 
@@ -32,13 +33,7 @@ function App(props) {
         <BingoCard className="bingo-card" />
         <CurrentPlayer className="current-player" />
         <Opponents className="opponents" />
-
-        <footer className="page-footer">
-          <p>&#10803;</p>
-          <p>
-            {appName} is fictional and does not depict anything real or imagined.
-          </p>
-        </footer>
+        <Footer className="page-footer" appName={appName} />
       </div>
       <RegisterModal />
     </React.Fragment>
