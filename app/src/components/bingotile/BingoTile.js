@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { tileSelected, tileUnselected } from "../../app/appSlice";
+import { tileSelected, tileUnselected } from "app/appSlice";
 import styles from "./BingoTile.module.css";
 
 export function BingoTile(props) {

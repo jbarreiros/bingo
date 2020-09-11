@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 import { useSelector } from "react-redux";
-import { selectCurrentPlayer, selectPlayerList } from "../../app/appSlice";
-import { MiniBingoCard } from "../minibingocard/MiniBingoCard";
+import { selectCurrentPlayer, selectPlayerList } from "app/appSlice";
+import { MiniBingoCard } from "components/minibingocard/MiniBingoCard";
 import styles from "./Opponents.module.css";
 
 function NoPlayers() {

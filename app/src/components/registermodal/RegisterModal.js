@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { registerPlayer } from "../../app/appSlice";
-import { Modal } from "../modal/Modal";
-import { RegisterForm } from "./RegisterForm";
+import { registerPlayer } from "app/appSlice";
+import { Modal } from "components/modal/Modal";
+import { RegisterForm } from "components/registermodal/RegisterForm";
 
 export function RegisterModal(props) {
   const dispatch = useDispatch();

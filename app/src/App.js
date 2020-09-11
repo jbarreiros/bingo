@@ -4,13 +4,13 @@ import {
   selectAppName,
   setCurrentPlayerTiles,
   updatePlayers,
-} from "./app/appSlice";
-import { BingoCardHeader } from "./components/bingocard/BingoCardHeader";
-import { BingoCard } from "./components/bingocard/BingoCard";
-import { CurrentPlayer } from "./components/currentplayer/CurrentPlayer";
-import { Opponents } from "./components/opponents/Opponents";
-import { RegisterModal } from "./components/registermodal/RegisterModal";
-import socket from "./app/socket";
+} from "app/appSlice";
+import { BingoCardHeader } from "components/bingocard/BingoCardHeader";
+import { BingoCard } from "components/bingocard/BingoCard";
+import { CurrentPlayer } from "components/currentplayer/CurrentPlayer";
+import { Opponents } from "components/opponents/Opponents";
+import { RegisterModal } from "components/registermodal/RegisterModal";
+import socket from "app/socket";
 import "./App.css";
 
 function App(props) {
