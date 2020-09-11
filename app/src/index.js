@@ -1,16 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import store from "./app/store";
-import { Provider } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+import { Provider } from "react-redux";
+import store from "app/store";
+import { App } from "page/app/App";
+import { ListTiles } from "page/list-tiles/ListTiles";
+import "./index.css";
 
 const mockTiles = Array.from(Array(25).keys());
+const playerTiles = window.pageData ? window.pageData.tiles : mockTiles;
 
 ReactDOM.render(
   <Provider store={store}>
-    <App playerTiles={window.pageData ? window.pageData.tiles : mockTiles} />
+    <Router>
+      <Switch>
+        <Route path="/tiles">
+          <ListTiles tiles={playerTiles} />
+        </Route>
+        <Route path="/">
+          <App playerTiles={playerTiles} />
+        </Route>
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

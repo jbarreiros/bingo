@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectAppName,
-  setCurrentPlayerTiles,
-  updatePlayers,
-} from "app/appSlice";
+import { selectAppName, setCurrentPlayerTiles, updatePlayers } from "app/appSlice";
 import { BingoCardHeader } from "components/bingocard/BingoCardHeader";
 import { BingoCard } from "components/bingocard/BingoCard";
 import { CurrentPlayer } from "components/currentplayer/CurrentPlayer";
@@ -14,7 +10,7 @@ import { Footer } from "components/footer/Footer";
 import socket from "app/socket";
 import "./App.css";
 
-function App(props) {
+export function App(props) {
   const dispatch = useDispatch();
   const appName = useSelector(selectAppName);
 
@@ -27,7 +23,7 @@ function App(props) {
   dispatch(setCurrentPlayerTiles(props.playerTiles));
 
   return (
-    <React.Fragment>
+    <>
       <div className="page-wrapper">
         <BingoCardHeader className="bingo-card-header" />
         <BingoCard className="bingo-card" />
@@ -36,8 +32,6 @@ function App(props) {
         <Footer className="page-footer" appName={appName} />
       </div>
       <RegisterModal />
-    </React.Fragment>
+    </>
   );
 }
-
-export default App;

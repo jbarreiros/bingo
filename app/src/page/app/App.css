@@ -29,9 +29,6 @@
 
 .page-footer {
   grid-area: footer;
-  font-size: 0.8rem;
-  text-align: center;
-  font-style: italic;
 }
 
 @media only screen and (min-width: env(--breakpoint)) {
