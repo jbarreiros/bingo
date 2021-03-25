@@ -7,6 +7,8 @@ export class Socket {
     this.onEventCallbacks = [];
     this.heartbeatIntervalMiliseconds = 2000;
     this.heartbeatIntervalId = null;
+    this.gameStatusIntervalMiliseconds = 10000;
+    this.gameStatusIntervalId = null;
   }
 
   /**
@@ -95,6 +97,15 @@ export class Socket {
     this.heartbeatIntervalId = window.setInterval(
       this.send.bind(this, "heartbeat", {}),
       this.heartbeatIntervalMiliseconds
+    );
+  }
+
+  startGameStatusWatcher() {
+    window.clearInterval(this.gameStatusIntervalId);
+
+    this.gameStatusIntervalId = window.setInterval(
+      this.send.bind(this, "game-status", {}),
+      this.gameStatusIntervalMiliseconds
     );
   }
 

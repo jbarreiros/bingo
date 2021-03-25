@@ -4,23 +4,20 @@
 
 const path = require("path");
 const express = require("express");
-const es6Renderer = require("express-es6-template-engine");
 const app = express();
 require("express-ws")(app);
 
 const HTTP_HOSTNAME = process.env.HOST || "0.0.0.0";
 const HTTP_PORT = process.env.PORT || 8080;
-const IS_PROD = process.env.NODE_ENV === "production";
+// const IS_PROD = process.env.NODE_ENV === "production";
 
 // frontend
-app.set("views", ["./src/views", "./public"]);
-app.engine("html", es6Renderer);
-app.set("view engine", "html");
-app.use("/", require("./src/routes/app"));
+// app.set("views", ["./public"]);
+app.use("/", require("./src/routes/api"));
 
-if (!IS_PROD) {
-  app.use("/", express.static(path.join(__dirname, "/public")));
-}
+// if (!IS_PROD) {
+//   app.use("/", express.static(path.join(__dirname, "/public")));
+// }
 
 // websocket
 app.use("/", require("./src/routes/websocket"));
