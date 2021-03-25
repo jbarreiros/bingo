@@ -1,4 +1,4 @@
-.page-wrapper {
+.pageWrapper {
   display: grid;
   grid-template-areas:
     "header"
@@ -8,15 +8,15 @@
     "footer";
 }
 
-.bingo-card-header {
+.bingoCardHeader {
   grid-area: cardheader;
 }
 
-.bingo-card {
+.bingoCard {
   grid-area: cardbody;
 }
 
-.current-player {
+.currentPlayer {
   grid-area: header;
   align-self: center;
   justify-self: center;
@@ -27,12 +27,12 @@
   grid-area: opponents;
 }
 
-.page-footer {
+.pageFooter {
   grid-area: footer;
 }
 
 @media only screen and (min-width: env(--breakpoint)) {
-  .page-wrapper {
+  .pageWrapper {
     grid-template-columns: auto 1fr;
     grid-template-areas:
       "cardheader header"
@@ -40,7 +40,7 @@
       "footer footer";
   }
 
-  .current-player {
+  .currentPlayer {
     justify-self: end;
     margin-bottom: 0;
   }

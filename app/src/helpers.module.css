@@ -1,3 +1,17 @@
+/* 
+Layout helpers 
+*/
+
+.oneColumnPageWrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: calc(100vh - var(--body-y-padding));
+}
+
+/* 
+Utility classes
+*/
+
 .textCenter {
   text-align: center;
 }
@@ -6,4 +20,8 @@
   margin-left: 0;
   padding-left: 0;
   list-style-type: none;
+}
+
+.alignItemsCenter {
+  align-items: center;
 }
