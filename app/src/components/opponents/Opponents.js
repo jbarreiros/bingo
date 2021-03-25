@@ -5,8 +5,8 @@ import { selectCurrentPlayer, selectPlayerList } from "../../app/appSlice";
 import { MiniBingoCard } from "../minibingocard/MiniBingoCard";
 import styles from "./Opponents.module.css";
 
-function NoPlayers() {
-  return <p className={styles.noPlayers}>Bingo is better with friends!</p>;
+function BetterWithFriends() {
+  return <p className={styles.betterWithFriends}>Bingo is better with friends!</p>;
 }
 
 function PlayerList(props) {
@@ -22,11 +22,8 @@ export function Opponents(props) {
 
   return (
     <div className={classnames(props.className, styles.opponents)}>
-      {opponents.length > 0 ? (
-        <PlayerList players={opponents} />
-      ) : (
-        <NoPlayers />
-      )}
+      <PlayerList players={opponents} />
+      <BetterWithFriends />
     </div>
   );
 }
