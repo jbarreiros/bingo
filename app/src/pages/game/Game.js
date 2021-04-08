@@ -53,7 +53,7 @@ export function Game() {
   }
 
   async function dispatchTiles() {
-    const tiles = await getJson('/api/tiles');
+    const tiles = await getJson('/api/tiles/player');
     dispatch(setCurrentPlayerTiles(tiles));
   }
 
