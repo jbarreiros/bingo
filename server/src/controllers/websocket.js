@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 /**
  * @param {WebSocket} client
  * @param {WebSocketClients} clients
@@ -9,6 +11,18 @@ exports.onMessage = function (client, clients, players, ev) {
 
   if (data.event === "heartbeat") {
     // nothing to do, just keeping the connection alive
+
+    const gameConfigRaw = fs.readFileSync("./game.json");
+    const gameConfig = JSON.parse(gameConfigRaw);
+    client.send(
+      JSON.stringify({
+        event: "game",
+        data: {
+          active: gameConfig.allowPlayers,
+        },
+      })
+    );
+
     return;
   }
 

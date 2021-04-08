@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const controller = require("../controllers/app");
+const controller = require("../controllers/api");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -11,7 +11,8 @@ router.use((req, res, next) => {
 
 // prettier-ignore
 router
-  .get("/", controller.index)
-  .get("/tiles", controller.listTiles);
+  .get("/game", controller.game)
+  .get("/tiles", controller.tiles)
+  .get("/tiles/player", controller.playerTiles);
 
 module.exports = router;

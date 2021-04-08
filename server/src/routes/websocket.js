@@ -12,7 +12,7 @@ const clients = new WebSocketClients();
  */
 const players = new Map();
 
-router.ws("/", client => {
+router.ws("/", (client) => {
   client.onmessage = controller.onMessage.bind(null, client, clients, players);
 });
 

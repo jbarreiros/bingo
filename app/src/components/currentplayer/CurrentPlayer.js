@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changePlayerName, selectCurrentPlayer } from "../../app/appSlice";
+import { changePlayerName, selectCurrentPlayer } from "app/appSlice";
 import classnames from "classnames";
 import styles from "./CurrentPlayer.module.css";
 

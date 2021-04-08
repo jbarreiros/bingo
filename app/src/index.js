@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import store from "./app/store";
-import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
-
-const mockTiles = Array.from(Array(25).keys());
+import { Provider } from "react-redux";
+import store from "app/store";
+import { App } from "pages/app/App";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App playerTiles={window.pageData ? window.pageData.tiles : mockTiles} />
+    <App />
   </Provider>,
   document.getElementById("root")
 );

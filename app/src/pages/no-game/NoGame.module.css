@@ -1,0 +1,14 @@
+.noGame {
+    text-align: center;
+}
+
+.noGame::after {
+    content: '';
+    display: block;
+    background-image: url('./sleepy-friends.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    filter: grayscale(1);
+    height: 100px;
+}

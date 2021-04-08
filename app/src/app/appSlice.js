@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import uuid from "uuid-random";
-import socket from "./socket";
+import socket from "app/socket";
 
 export const slice = createSlice({
   name: "app",

@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 import { useSelector } from "react-redux";
-import { selectCurrentPlayer } from "../../app/appSlice";
-import { BingoTile } from "../bingotile/BingoTile";
+import { selectCurrentPlayer } from "app/appSlice";
+import { BingoTile } from "components/bingotile/BingoTile";
 import styles from "./BingoCard.module.css";
 
 export function BingoCard(props) {
