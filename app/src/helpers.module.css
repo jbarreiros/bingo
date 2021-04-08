@@ -25,3 +25,7 @@ Utility classes
 .alignItemsCenter {
   align-items: center;
 }
+
+.m0 {
+  margin: 0;
+}

@@ -17,10 +17,12 @@ export function ListTiles() {
         <title>Tiles - {appName}</title>
       </Helmet>
       <div className={styles.oneColumnPageWrapper}>
-        <p className={styles.textCenter}>Tiles:</p>
-        <ul className={classnames(styles.unstyledList, styles.textCenter)}>
-          {tiles?.map(tile => (<li key={tile.toString()}>{tile}</li>))}
-        </ul>
+        <div>
+          <p className={classnames(styles.textCenter, styles.m0)}>Tiles:</p>
+          <ul className={classnames(styles.unstyledList, styles.textCenter)}>
+            {tiles?.map(tile => (<li key={tile.toString()}>{tile}</li>))}
+          </ul>
+        </div>
         <Footer />
       </div>
     </>
