@@ -3,8 +3,7 @@ A silly pile of code trying to pass itself off as a multi-player bingo game. I w
 ## Architecture
 
 - Server
-  - [Express](https://expressjs.com/) application for serving pages and a websocket.
-  - [express-es6-template-engine](https://github.com/dondido/express-es6-template-engine) template engine.
+  - [Express](https://expressjs.com/) application for serving an API and a websocket.
 - Client
   - React app bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) templates.
 
