@@ -15,6 +15,11 @@ app.use("/api", require("./src/routes/api"));
 // websocket
 app.use("/", require("./src/routes/websocket"));
 
+// react app (relevant to production)
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "app", "index.html"));
+});
+
 app.listen(HTTP_PORT, HTTP_HOSTNAME, () =>
   console.info(`Listening on ${HTTP_HOSTNAME}:${HTTP_PORT}`)
 );
