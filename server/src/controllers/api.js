@@ -13,10 +13,18 @@ exports.game = (req, res) => {
  * @param {http.ServerResponse} res
  */
 exports.tiles = (req, res) => {
+    res.json(res.gameConfig.tiles);
+}
+
+/**
+ * @param {http.ServerRequest} req
+ * @param {http.ServerResponse} res
+ */
+exports.playerTiles = (req, res) => {
     const { tiles, freeTile } = res.gameConfig;
     const playerTiles = generatePlayerTiles(tiles, freeTile);
 
-    res.json({ playerTiles });
+    res.json(playerTiles);
 }
 
 /**

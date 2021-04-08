@@ -1,24 +1,29 @@
 import { useState, useEffect } from 'react';
 
-export const useFetch = (url, options) => {
+export const getJson = async (url, options = null) => {
+  const response = await fetch(url, { ...options, 'method': 'GET' });
+  return await response.json();
+}
+
+export const useFetch = (url, options = null) => {
   const [response, setResponse] = useState(null);
+  const [json, setJson] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const json = await fetchHelper(url, options);
-        setResponse(json);
+        const response = await fetch(url, options);
+        const json = await response.json();
+        setResponse(response);
+        setJson(json);
       } catch (error) {
         setError(error);
       }
     })();
-  });
 
-  return { response, error };
-};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
-export const fetchHelper = async (url, options) => {
-  const response = await fetch(url, options);
-  return await response.json();
+  return { response, json, error };
 };

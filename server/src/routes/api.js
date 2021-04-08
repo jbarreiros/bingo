@@ -12,6 +12,7 @@ router.use((req, res, next) => {
 // prettier-ignore
 router
   .get("/game", controller.game)
-  .get("/tiles", controller.tiles);
+  .get("/tiles", controller.tiles)
+  .get("/tiles/player", controller.playerTiles);
 
 module.exports = router;

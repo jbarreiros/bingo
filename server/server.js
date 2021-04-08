@@ -11,7 +11,7 @@ const HTTP_HOSTNAME = process.env.HOST || "0.0.0.0";
 const HTTP_PORT = process.env.PORT || 8080;
 
 // frontend api
-app.use("/", require("./src/routes/api"));
+app.use("/api", require("./src/routes/api"));
 
 // websocket
 app.use("/", require("./src/routes/websocket"));
