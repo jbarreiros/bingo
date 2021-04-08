@@ -1,5 +1,5 @@
-/* 
-Layout helpers 
+/*
+Layout helpers
 */
 
 .oneColumnPageWrapper {
@@ -8,7 +8,7 @@ Layout helpers
   min-height: calc(100vh - var(--body-y-padding));
 }
 
-/* 
+/*
 Utility classes
 */
 
