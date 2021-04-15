@@ -2,6 +2,7 @@
  * Bingo App
  */
 
+const path = require("path");
 const express = require("express");
 const app = express();
 require("express-ws")(app);
@@ -17,7 +18,7 @@ app.use("/", require("./src/routes/websocket"));
 
 // react app (relevant to production)
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "app", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(HTTP_PORT, HTTP_HOSTNAME, () =>
