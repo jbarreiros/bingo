@@ -9,9 +9,10 @@
 }
 
 .betterWithFriends {
-  background-image: url('./happy-friends.png');
+  background-image: url("./happy-friends.png");
   background-repeat: no-repeat;
   background-position: center bottom;
+  background-size: auto;
   width: 100%;
   text-align: center;
   height: 156px; /* image is 126px tall */
@@ -28,4 +29,9 @@
   .betterWithFriends {
     margin-top: 60px;
   }
+}
+
+.miniBetterWithFriends {
+  background-size: 250px;
+  height: 100px;
 }
